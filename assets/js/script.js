@@ -16,10 +16,24 @@ async function loadComponent(id, path) {
   const res = await fetch(path);
   const html = await res.text();
   document.getElementById(id).innerHTML = html;
+  // Fix asset paths when loaded from a subdirectory page
+  if (isInSubdir) {
+    document
+      .getElementById(id)
+      .querySelectorAll("[src],[href]")
+      .forEach((el) => {
+        ["src", "href"].forEach((attr) => {
+          const val = el.getAttribute(attr);
+          if (val && val.startsWith("./")) {
+            el.setAttribute(attr, "../" + val.slice(2));
+          }
+        });
+      });
+  }
 }
 
 const isInSubdir = window.location.pathname.includes("/pages/");
-const componentBase = "/components/";
+const componentBase = isInSubdir ? "../components/" : "components/";
 
 Promise.all([
   loadComponent("header-placeholder", componentBase + "header.html"),
