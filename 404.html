@@ -94,7 +94,7 @@
       const timerEl = document.getElementById("err-timer");
       const interval = setInterval(() => {
         seconds--;
-        timerEl.textContent = seconds;
+        if (timerEl) timerEl.textContent = seconds;
         if (seconds <= 0) {
           clearInterval(interval);
           window.location.href = "index.html";

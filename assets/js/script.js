@@ -53,7 +53,8 @@ Promise.all([
       .forEach((link) => {
         link.addEventListener("click", (e) => {
           e.preventDefault();
-          window.location.href = "/404.html";
+          const base = window.location.pathname.replace(/\/[^\/]*$/, "/");
+          window.location.href = base + "404.html";
         });
       });
   }
