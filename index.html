@@ -1,0 +1,1264 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Stackly - Healthcare</title>
+
+    <!-- Bootstrap 5 -->
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+    />
+    <!-- Font Awesome -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+    />
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <!-- Animate.css -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
+    />
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="assets/css/loader.css" />
+    <link rel="stylesheet" href="assets/css/styles.css" />
+  </head>
+  <body>
+    <!-- ===== PAGE LOADER ===== -->
+    <div id="page-loader">
+      <div class="loader-inner">
+        <!-- Cross / Plus medical icon -->
+        <div class="loader-cross"><span></span><span></span></div>
+        <!-- Orbiting dots -->
+        <div class="loader-orbit">
+          <div class="loader-dot loader-dot--1"></div>
+          <div class="loader-dot loader-dot--2"></div>
+          <div class="loader-dot loader-dot--3"></div>
+        </div>
+        <!-- ECG line -->
+        <div class="loader-ecg-wrap">
+          <svg
+            viewBox="0 0 300 50"
+            preserveAspectRatio="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <polyline
+              class="loader-ecg-line"
+              points="0,25 40,25 60,25 72,5 84,45 96,12 108,38 120,25 180,25 194,2 208,48 222,25 300,25"
+            />
+          </svg>
+        </div>
+        <!-- Brand -->
+        <div class="loader-brand">
+          <img src="assets/images/logoStackly.webp" alt="MediCare Logo" class="loader-logo" />
+          <span class="loader-brand-tag">Your Health, Our Priority</span>
+        </div>
+        <!-- Progress bar -->
+        <div class="loader-progress">
+          <div class="loader-progress-bar"></div>
+        </div>
+      </div>
+    </div>
+    <!-- ===== END PAGE LOADER ===== -->
+    <!-- ===== HEADER ===== -->
+    <div id="header-placeholder"></div>
+    <!-- ===== END HEADER ===== -->
+
+    <!-- ===== HERO BANNER ===== -->
+    <section class="hero-section">
+      <div
+        id="heroCarousel"
+        class="carousel slide carousel-fade"
+        data-bs-ride="carousel"
+      >
+        <div class="carousel-inner">
+          <div class="carousel-item active">
+            <div
+              class="hero-slide"
+              style="
+                background-image: url(&quot;https://images.unsplash.com/photo-1579684385127-1ef15d508118?w=1600&q=80&quot;);
+              "
+            >
+              <div class="hero-overlay">
+                <div class="container">
+                  <div class="hero-content animate__animated animate__fadeInUp">
+                    <span class="hero-badge">Trusted Healthcare</span>
+                    <h1>Meet the <span>Best Doctors</span><br />in the City</h1>
+                    <p>
+                      Compassionate care, cutting-edge treatment, and a team
+                      dedicated to your well-being.
+                    </p>
+                    <div class="hero-btns">
+                      <a
+                        href="#"
+                        class="btn btn-primary btn-lg rounded-pill px-5"
+                        >Our Services</a
+                      >
+                      <a
+                        href="#"
+                        class="btn btn-outline-light btn-lg rounded-pill px-5"
+                        >Learn More</a
+                      >
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="carousel-item">
+            <div
+              class="hero-slide"
+              style="
+                background-image: url(&quot;https://images.unsplash.com/photo-1551190822-a9333d879b1f?w=1600&q=80&quot;);
+              "
+            >
+              <div class="hero-overlay">
+                <div class="container">
+                  <div class="hero-content animate__animated animate__fadeInUp">
+                    <span class="hero-badge">World-Class Facility</span>
+                    <h1>
+                      Advanced <span>Medical Care</span><br />For Everyone
+                    </h1>
+                    <p>
+                      State-of-the-art equipment and experienced specialists
+                      available around the clock.
+                    </p>
+                    <div class="hero-btns">
+                      <a
+                        href="#"
+                        class="btn btn-primary btn-lg rounded-pill px-5"
+                        >Book Now</a
+                      >
+                      <a
+                        href="#"
+                        class="btn btn-outline-light btn-lg rounded-pill px-5"
+                        >Contact Us</a
+                      >
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <button
+          class="carousel-control-prev"
+          type="button"
+          data-bs-target="#heroCarousel"
+          data-bs-slide="prev"
+        >
+          <span class="carousel-control-prev-icon"></span>
+        </button>
+        <button
+          class="carousel-control-next"
+          type="button"
+          data-bs-target="#heroCarousel"
+          data-bs-slide="next"
+        >
+          <span class="carousel-control-next-icon"></span>
+        </button>
+        <div class="carousel-indicators">
+          <button
+            type="button"
+            data-bs-target="#heroCarousel"
+            data-bs-slide-to="0"
+            class="active"
+          ></button>
+          <button
+            type="button"
+            data-bs-target="#heroCarousel"
+            data-bs-slide-to="1"
+          ></button>
+        </div>
+      </div>
+    </section>
+    <!-- ===== END HERO ===== -->
+
+    <!-- ===== ABOUT FEATURES ===== -->
+    <section class="about-features-area section-pad">
+      <div class="container">
+        <div class="row align-items-center g-5">
+          <!-- Info Content -->
+          <div class="col-lg-6">
+            <h5 class="sub-title">Has been working since 2000</h5>
+            <h2 class="section-h2">
+              A Great Place to Work. A Great Place to <strong>Receive.</strong>
+            </h2>
+            <p class="text-muted mb-4">
+              For over two decades, we've been committed to delivering
+              world-class healthcare with compassion. Our expert team, modern
+              facilities, and patient-first approach make us the region's most
+              trusted medical center.
+            </p>
+            <ul class="af-feature-list">
+              <li>
+                <div class="af-icon"><i class="fas fa-calendar-check"></i></div>
+                <div class="af-content">
+                  <h5><a href="#">Online Appointment</a></h5>
+                  <p>
+                    Book your visit in seconds — anytime, from anywhere, with
+                    instant confirmation.
+                  </p>
+                </div>
+              </li>
+              <li>
+                <div class="af-icon"><i class="fas fa-pills"></i></div>
+                <div class="af-content">
+                  <h5><a href="#">Health Queries</a></h5>
+                  <p>
+                    Get expert answers to your health questions from certified
+                    specialists 24/7.
+                  </p>
+                </div>
+              </li>
+              <li>
+                <div class="af-icon"><i class="fas fa-ambulance"></i></div>
+                <div class="af-content">
+                  <h5><a href="#">Emergency Response</a></h5>
+                  <p>
+                    Rapid emergency care with a dedicated team ready around the
+                    clock.
+                  </p>
+                </div>
+              </li>
+            </ul>
+          </div>
+
+          <!-- Schedule Table -->
+          <div class="col-lg-6">
+            <div class="af-schedule-wrap">
+              <div class="af-schedule-header">
+                <i class="fas fa-calendar-alt"></i>
+                <span>Weekly Service Schedule</span>
+              </div>
+              <div class="table-responsive">
+                <table class="table af-schedule-table">
+                  <thead>
+                    <tr>
+                      <th>Service</th>
+                      <th>Day</th>
+                      <th>Hours</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>
+                        <a href="#"
+                          ><i class="fas fa-heartbeat me-2 text-primary"></i
+                          >Medicine & Health</a
+                        >
+                      </td>
+                      <td><span class="af-day-badge">Sun</span></td>
+                      <td><span class="af-hours">8:00 – 24:00</span></td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <a href="#"
+                          ><i class="fas fa-tooth me-2 text-primary"></i>Dental
+                          Care</a
+                        >
+                      </td>
+                      <td><span class="af-day-badge">Mon</span></td>
+                      <td><span class="af-hours">10:00 – 18:00</span></td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <a href="#"
+                          ><i class="fas fa-eye me-2 text-primary"></i>Eye
+                          Treatment</a
+                        >
+                      </td>
+                      <td><span class="af-day-badge">Tue</span></td>
+                      <td><span class="af-hours">6:00 – 24:00</span></td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <a href="#"
+                          ><i class="fas fa-baby me-2 text-primary"></i>Children
+                          Care</a
+                        >
+                      </td>
+                      <td><span class="af-day-badge">Wed</span></td>
+                      <td><span class="af-hours">12:00 – 20:00</span></td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <a href="#"
+                          ><i class="fas fa-bone me-2 text-primary"></i
+                          >Traumatology</a
+                        >
+                      </td>
+                      <td><span class="af-day-badge">Thu</span></td>
+                      <td><span class="af-hours">11:20 – 20:45</span></td>
+                    </tr>
+                    <tr class="af-day-off">
+                      <td><i class="fas fa-moon me-2"></i>Day Off</td>
+                      <td>
+                        <span class="af-day-badge af-day-badge--off">Fri</span>
+                      </td>
+                      <td>
+                        <span class="af-hours af-hours--off">Closed</span>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- ===== END ABOUT FEATURES ===== -->
+
+    <!-- ===== QUICK INFO BAR ===== -->
+    <section class="info-bar">
+      <div class="container">
+        <div class="row g-0">
+          <div class="col-md-4 info-bar-item info-bar-item--emergency">
+            <div class="info-bar-icon-wrap">
+              <i class="fas fa-phone-alt"></i>
+              <span class="info-bar-pulse"></span>
+            </div>
+            <div class="info-bar-text">
+              <span>Emergency Call</span>
+              <strong>+1 (416) 555-1234</strong>
+              <a href="tel:+14165551234" class="info-bar-link"
+                >Call Now <i class="fas fa-arrow-right"></i
+              ></a>
+            </div>
+          </div>
+          <div class="col-md-4 info-bar-item">
+            <div class="info-bar-icon-wrap">
+              <i class="fas fa-clock"></i>
+            </div>
+            <div class="info-bar-text">
+              <span>Working Hours</span>
+              <strong>Mon – Sat: 8am – 8pm</strong>
+              <a href="#" class="info-bar-link"
+                >View Schedule <i class="fas fa-arrow-right"></i
+              ></a>
+            </div>
+          </div>
+          <div class="col-md-4 info-bar-item">
+            <div class="info-bar-icon-wrap">
+              <i class="fas fa-map-marker-alt"></i>
+            </div>
+            <div class="info-bar-text">
+              <span>Our Location</span>
+              <strong>California, TX 70240</strong>
+              <a href="#" class="info-bar-link"
+                >Get Directions <i class="fas fa-arrow-right"></i
+              ></a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- ===== END INFO BAR ===== -->
+
+    <!-- ===== ABOUT ===== -->
+    <section class="section-pad bg-light-gray">
+      <div class="container">
+        <div class="row align-items-center g-5">
+          <div class="col-lg-6">
+            <div class="about-img-wrap">
+              <img
+                src="https://images.unsplash.com/photo-1631217868264-e5b90bb7e133?w=800&q=80"
+                alt="About Us"
+                class="img-fluid rounded-3 shadow-lg"
+              />
+              <div class="about-badge">
+                <strong>25+</strong>
+                <span>Years of Excellence</span>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-6">
+            <h5 class="sub-title">About Us</h5>
+            <h2 class="section-h2">
+              We Are Committed to Your Health &amp; Recovery
+            </h2>
+            <p class="text-muted mb-4">
+              Our hospital has been serving the community for over 25 years with
+              a team of dedicated professionals committed to delivering the
+              highest standard of patient care.
+            </p>
+            <ul class="about-list">
+              <li>
+                <i class="fas fa-check-circle"></i> 200+ Experienced Doctors
+              </li>
+              <li>
+                <i class="fas fa-check-circle"></i> 24/7 Emergency Services
+              </li>
+              <li>
+                <i class="fas fa-check-circle"></i> Modern Medical Equipment
+              </li>
+              <li>
+                <i class="fas fa-check-circle"></i> Patient-Centered Approach
+              </li>
+            </ul>
+            <a href="#" class="btn btn-primary rounded-pill px-5 mt-2"
+              >Learn More</a
+            >
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- ===== END ABOUT ===== -->
+
+    <!-- ===== DEPARTMENTS ===== -->
+    <section class="departments-area section-pad">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-8 offset-lg-2">
+            <div class="section-title text-center">
+              <h5 class="sub-title">Our Services</h5>
+              <h2>Specialized Departments</h2>
+              <p>
+                World-class care across every specialty. Our departments are
+                staffed by leading experts equipped with the latest medical
+                technology to serve you better.
+              </p>
+            </div>
+          </div>
+        </div>
+        <ul
+          class="nav nav-pills dept-tabs justify-content-center flex-wrap gap-3 mb-5"
+          id="deptTab"
+          role="tablist"
+        >
+          <li class="nav-item" role="presentation">
+            <button
+              class="dept-tab-btn nav-link active"
+              data-bs-toggle="pill"
+              data-bs-target="#dept-1"
+              type="button"
+              role="tab"
+            >
+              <div class="dept-tab-icon">
+                <i class="fas fa-stethoscope"></i>
+              </div>
+              <span>Medical Checkups</span>
+            </button>
+          </li>
+          <li class="nav-item" role="presentation">
+            <button
+              class="dept-tab-btn nav-link"
+              data-bs-toggle="pill"
+              data-bs-target="#dept-2"
+              type="button"
+              role="tab"
+            >
+              <div class="dept-tab-icon"><i class="fas fa-heartbeat"></i></div>
+              <span>Cardiology</span>
+            </button>
+          </li>
+          <li class="nav-item" role="presentation">
+            <button
+              class="dept-tab-btn nav-link"
+              data-bs-toggle="pill"
+              data-bs-target="#dept-3"
+              type="button"
+              role="tab"
+            >
+              <div class="dept-tab-icon"><i class="fas fa-tooth"></i></div>
+              <span>Dental Care</span>
+            </button>
+          </li>
+          <li class="nav-item" role="presentation">
+            <button
+              class="dept-tab-btn nav-link"
+              data-bs-toggle="pill"
+              data-bs-target="#dept-4"
+              type="button"
+              role="tab"
+            >
+              <div class="dept-tab-icon"><i class="fas fa-brain"></i></div>
+              <span>Neurology</span>
+            </button>
+          </li>
+          <li class="nav-item" role="presentation">
+            <button
+              class="dept-tab-btn nav-link"
+              data-bs-toggle="pill"
+              data-bs-target="#dept-5"
+              type="button"
+              role="tab"
+            >
+              <div class="dept-tab-icon"><i class="fas fa-virus"></i></div>
+              <span>Corona Checkup</span>
+            </button>
+          </li>
+          <li class="nav-item" role="presentation">
+            <button
+              class="dept-tab-btn nav-link"
+              data-bs-toggle="pill"
+              data-bs-target="#dept-6"
+              type="button"
+              role="tab"
+            >
+              <div class="dept-tab-icon"><i class="fas fa-procedures"></i></div>
+              <span>Kidney Solution</span>
+            </button>
+          </li>
+        </ul>
+        <div class="tab-content" id="deptTabContent">
+          <div class="tab-pane fade show active" id="dept-1" role="tabpanel">
+            <div class="row align-items-center g-5">
+              <div class="col-lg-5">
+                <img
+                  src="https://images.unsplash.com/photo-1579684385127-1ef15d508118?w=700&q=80"
+                  alt="Medical Checkups"
+                  class="img-fluid rounded-3 shadow"
+                />
+              </div>
+              <div class="col-lg-7">
+                <h2 class="section-h2">
+                  Welcome to our <br />
+                  Medical Checkup Department
+                </h2>
+                <p class="text-muted mb-4">
+                  Delightful unreserved impossible few estimating men favourable
+                  see entreaties. She propriety immediate was improving. He or
+                  entrance humoured likewise moderate. Much nor game son say
+                  feel.
+                </p>
+                <ul class="dept-list">
+                  <li>Height / weight check</li>
+                  <li>Blood pressure check</li>
+                  <li>Cholesterol level check</li>
+                  <li>Blood sugar test</li>
+                </ul>
+                <a href="#" class="btn btn-primary rounded-pill px-5 mt-3"
+                  ><i class="fas fa-angle-right me-2"></i>Make Appointment</a
+                >
+              </div>
+            </div>
+          </div>
+          <div class="tab-pane fade" id="dept-2" role="tabpanel">
+            <div class="row align-items-center g-5">
+              <div class="col-lg-5">
+                <img
+                  src="https://images.unsplash.com/photo-1628348068343-c6a848d2b6dd?w=700&q=80"
+                  alt="Cardiology"
+                  class="img-fluid rounded-3 shadow"
+                />
+              </div>
+              <div class="col-lg-7">
+                <h2 class="section-h2">
+                  Welcome to our <br />
+                  Cardiology Department
+                </h2>
+                <p class="text-muted mb-4">
+                  Delightful unreserved impossible few estimating men favourable
+                  see entreaties. She propriety immediate was improving. He or
+                  entrance humoured likewise moderate. Much nor game son say
+                  feel.
+                </p>
+                <ul class="dept-list">
+                  <li>Height / weight check</li>
+                  <li>Blood pressure check</li>
+                  <li>Cholesterol level check</li>
+                  <li>Blood sugar test</li>
+                </ul>
+                <a href="#" class="btn btn-primary rounded-pill px-5 mt-3"
+                  ><i class="fas fa-angle-right me-2"></i>Make Appointment</a
+                >
+              </div>
+            </div>
+          </div>
+          <div class="tab-pane fade" id="dept-3" role="tabpanel">
+            <div class="row align-items-center g-5">
+              <div class="col-lg-5">
+                <img
+                  src="https://images.unsplash.com/photo-1606811841689-23dfddce3e95?w=700&q=80"
+                  alt="Dental Care"
+                  class="img-fluid rounded-3 shadow"
+                />
+              </div>
+              <div class="col-lg-7">
+                <h2 class="section-h2">
+                  Welcome to our <br />
+                  Dental Care Department
+                </h2>
+                <p class="text-muted mb-4">
+                  Delightful unreserved impossible few estimating men favourable
+                  see entreaties. She propriety immediate was improving. He or
+                  entrance humoured likewise moderate. Much nor game son say
+                  feel.
+                </p>
+                <ul class="dept-list">
+                  <li>Height / weight check</li>
+                  <li>Blood pressure check</li>
+                  <li>Cholesterol level check</li>
+                  <li>Blood sugar test</li>
+                </ul>
+                <a href="#" class="btn btn-primary rounded-pill px-5 mt-3"
+                  ><i class="fas fa-angle-right me-2"></i>Make Appointment</a
+                >
+              </div>
+            </div>
+          </div>
+          <div class="tab-pane fade" id="dept-4" role="tabpanel">
+            <div class="row align-items-center g-5">
+              <div class="col-lg-5">
+                <img
+                  src="https://images.unsplash.com/photo-1559757175-5700dde675bc?w=700&q=80"
+                  alt="Neurology"
+                  class="img-fluid rounded-3 shadow"
+                />
+              </div>
+              <div class="col-lg-7">
+                <h2 class="section-h2">
+                  Welcome to our <br />
+                  Neurology Department
+                </h2>
+                <p class="text-muted mb-4">
+                  Delightful unreserved impossible few estimating men favourable
+                  see entreaties. She propriety immediate was improving. He or
+                  entrance humoured likewise moderate. Much nor game son say
+                  feel.
+                </p>
+                <ul class="dept-list">
+                  <li>Height / weight check</li>
+                  <li>Blood pressure check</li>
+                  <li>Cholesterol level check</li>
+                  <li>Blood sugar test</li>
+                </ul>
+                <a href="#" class="btn btn-primary rounded-pill px-5 mt-3"
+                  ><i class="fas fa-angle-right me-2"></i>Make Appointment</a
+                >
+              </div>
+            </div>
+          </div>
+          <div class="tab-pane fade" id="dept-5" role="tabpanel">
+            <div class="row align-items-center g-5">
+              <div class="col-lg-5">
+                <img
+                  src="https://images.unsplash.com/photo-1584036561566-baf8f5f1b144?w=700&q=80"
+                  alt="Corona Checkup"
+                  class="img-fluid rounded-3 shadow"
+                />
+              </div>
+              <div class="col-lg-7">
+                <h2 class="section-h2">
+                  Welcome to our <br />
+                  Corona Checkup Department
+                </h2>
+                <p class="text-muted mb-4">
+                  Delightful unreserved impossible few estimating men favourable
+                  see entreaties. She propriety immediate was improving. He or
+                  entrance humoured likewise moderate. Much nor game son say
+                  feel.
+                </p>
+                <ul class="dept-list">
+                  <li>Height / weight check</li>
+                  <li>Blood pressure check</li>
+                  <li>Cholesterol level check</li>
+                  <li>Blood sugar test</li>
+                </ul>
+                <a href="#" class="btn btn-primary rounded-pill px-5 mt-3"
+                  ><i class="fas fa-angle-right me-2"></i>Make Appointment</a
+                >
+              </div>
+            </div>
+          </div>
+          <div class="tab-pane fade" id="dept-6" role="tabpanel">
+            <div class="row align-items-center g-5">
+              <div class="col-lg-5">
+                <img
+                  src="https://images.unsplash.com/photo-1631815588090-d4bfec5b1ccb?w=700&q=80"
+                  alt="Kidney Solution"
+                  class="img-fluid rounded-3 shadow"
+                />
+              </div>
+              <div class="col-lg-7">
+                <h2 class="section-h2">
+                  Welcome to our <br />
+                  Kidney Solution Department
+                </h2>
+                <p class="text-muted mb-4">
+                  Delightful unreserved impossible few estimating men favourable
+                  see entreaties. She propriety immediate was improving. He or
+                  entrance humoured likewise moderate. Much nor game son say
+                  feel.
+                </p>
+                <ul class="dept-list">
+                  <li>Height / weight check</li>
+                  <li>Blood pressure check</li>
+                  <li>Cholesterol level check</li>
+                  <li>Blood sugar test</li>
+                </ul>
+                <a href="#" class="btn btn-primary rounded-pill px-5 mt-3"
+                  ><i class="fas fa-angle-right me-2"></i>Make Appointment</a
+                >
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- ===== END DEPARTMENTS ===== -->
+
+    <!-- ===== FUN FACTS ===== -->
+    <section class="fun-facts-area section-pad">
+      <div class="container">
+        <div class="fun-facts-inner">
+          <div class="row text-center g-4">
+            <div class="col-lg-3 col-md-6">
+              <div class="fun-fact">
+                <div class="fun-fact-number" data-to="230">0</div>
+                <span>Satisfied Patients</span>
+              </div>
+            </div>
+            <div class="col-lg-3 col-md-6">
+              <div class="fun-fact">
+                <div class="fun-fact-number" data-to="89">0</div>
+                <span>Regular Doctors</span>
+              </div>
+            </div>
+            <div class="col-lg-3 col-md-6">
+              <div class="fun-fact">
+                <div class="fun-fact-number" data-to="50">0</div>
+                <span>Departments</span>
+              </div>
+            </div>
+            <div class="col-lg-3 col-md-6">
+              <div class="fun-fact">
+                <div class="fun-fact-number" data-to="2348">0</div>
+                <span>Staff Members</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- ===== END FUN FACTS ===== -->
+
+    <!-- ===== HEALTH TIPS ===== -->
+    <section class="health-tips-area section-pad">
+      <div class="container">
+        <div class="row justify-content-between align-items-end mb-5">
+          <div class="col-lg-6">
+            <h5 class="sub-title">Health Tips</h5>
+            <h2 class="section-h2 mb-0">
+              Expert Tips for a
+              <span class="tips-heading-accent">Healthier Life</span>
+            </h2>
+          </div>
+          <div class="col-lg-auto mt-3 mt-lg-0">
+            <a href="#" class="btn btn-outline-primary rounded-pill px-4"
+              ><i class="fas fa-th-large me-2"></i>View All Tips</a
+            >
+          </div>
+        </div>
+        <div class="row g-4">
+          <!-- Tip Card 1 -->
+          <div class="col-lg-4 col-md-6">
+            <div class="tip-card">
+              <div class="tip-card-img">
+                <img
+                  src="https://images.unsplash.com/photo-1512621776951-a57141f2eefd?w=600&q=80"
+                  alt="Healthy Lifestyle"
+                />
+                <span class="tip-category"
+                  ><i class="fas fa-leaf me-1"></i>Lifestyle</span
+                >
+              </div>
+              <div class="tip-card-body">
+                <h4>How to Live a Healthy Lifestyle?</h4>
+                <ul class="tips-list">
+                  <li>Don't worry about things you cannot control.</li>
+                  <li>Eat healthy, stay active, and rest well.</li>
+                  <li>Avoid toxic relationships and environments.</li>
+                </ul>
+                <div class="tip-doctor">
+                  <img
+                    src="https://images.unsplash.com/photo-1559839734-2b71ea197ec2?w=80&q=80"
+                    alt="Dr. Jessica Ronal"
+                  />
+                  <div>
+                    <strong>Dr. Jessica Ronal</strong>
+                    <span>MPH, Medicine & Surgery</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- Tip Card 2 -->
+          <div class="col-lg-4 col-md-6">
+            <div class="tip-card tip-card--featured">
+              <div class="tip-card-img">
+                <img
+                  src="https://images.unsplash.com/photo-1490645935967-10de6ba17061?w=600&q=80"
+                  alt="Balanced Diet"
+                />
+                <span class="tip-category"
+                  ><i class="fas fa-apple-alt me-1"></i>Nutrition</span
+                >
+              </div>
+              <div class="tip-card-body">
+                <h4>How to Maintain a Balanced Diet?</h4>
+                <ul class="tips-list">
+                  <li>Include more fruits and vegetables daily.</li>
+                  <li>Drink at least 8 glasses of water a day.</li>
+                  <li>Plan your meals ahead for better nutrition.</li>
+                </ul>
+                <div class="tip-doctor">
+                  <img
+                    src="https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?w=80&q=80"
+                    alt="Dr. Michael Chen"
+                  />
+                  <div>
+                    <strong>Dr. Michael Chen</strong>
+                    <span>MD, Nutrition & Dietetics</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- Tip Card 3 -->
+          <div class="col-lg-4 col-md-6">
+            <div class="tip-card">
+              <div class="tip-card-img">
+                <img
+                  src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=600&q=80"
+                  alt="Mental Health"
+                />
+                <span class="tip-category"
+                  ><i class="fas fa-brain me-1"></i>Mental Health</span
+                >
+              </div>
+              <div class="tip-card-body">
+                <h4>How to Improve Your Mental Wellbeing?</h4>
+                <ul class="tips-list">
+                  <li>Practice mindfulness and meditation daily.</li>
+                  <li>Stay connected with friends and family.</li>
+                  <li>Get 7–8 hours of quality sleep each night.</li>
+                </ul>
+                <div class="tip-doctor">
+                  <img
+                    src="https://images.unsplash.com/photo-1594824476967-48c8b964273f?w=80&q=80"
+                    alt="Dr. Emily Davis"
+                  />
+                  <div>
+                    <strong>Dr. Emily Davis</strong>
+                    <span>PhD, Psychiatry & Wellness</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- ===== END HEALTH TIPS ===== -->
+
+    <!-- ===== DOCTORS ===== -->
+    <section class="doctors-area section-pad">
+      <div class="container">
+        <div class="section-title text-center">
+          <h5 class="sub-title">Our Team</h5>
+          <h2>Meet Our Expert Doctors</h2>
+          <p>
+            World-class specialists dedicated to delivering compassionate,
+            cutting-edge care for every patient.
+          </p>
+        </div>
+        <div class="row g-4">
+          <div class="col-lg-3 col-md-6">
+            <div class="doctor-card">
+              <div class="doctor-img">
+                <img
+                  src="https://images.unsplash.com/photo-1559839734-2b71ea197ec2?w=400&q=80"
+                  alt="Dr. Sarah Johnson"
+                />
+                <div class="doctor-social">
+                  <a href="#"><i class="fab fa-facebook-f"></i></a>
+                  <a href="#"><i class="fab fa-twitter"></i></a>
+                  <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                </div>
+              </div>
+              <div class="doctor-info">
+                <div class="doctor-info-top">
+                  <h4>Dr. Sarah Johnson</h4>
+                  <span class="doctor-spec">Cardiologist</span>
+                </div>
+                <div class="doctor-meta">
+                  <span><i class="fas fa-star"></i> 4.9</span>
+                  <span><i class="fas fa-user-friends"></i> 1.2k Patients</span>
+                </div>
+                <a href="#" class="doctor-appt-btn">Book Appointment</a>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-3 col-md-6">
+            <div class="doctor-card">
+              <div class="doctor-img">
+                <img
+                  src="https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?w=400&q=80"
+                  alt="Dr. Michael Chen"
+                />
+                <div class="doctor-social">
+                  <a href="#"><i class="fab fa-facebook-f"></i></a>
+                  <a href="#"><i class="fab fa-twitter"></i></a>
+                  <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                </div>
+              </div>
+              <div class="doctor-info">
+                <div class="doctor-info-top">
+                  <h4>Dr. Michael Chen</h4>
+                  <span class="doctor-spec">Neurologist</span>
+                </div>
+                <div class="doctor-meta">
+                  <span><i class="fas fa-star"></i> 4.8</span>
+                  <span><i class="fas fa-user-friends"></i> 980 Patients</span>
+                </div>
+                <a href="#" class="doctor-appt-btn">Book Appointment</a>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-3 col-md-6">
+            <div class="doctor-card">
+              <div class="doctor-img">
+                <img
+                  src="https://images.unsplash.com/photo-1594824476967-48c8b964273f?w=400&q=80"
+                  alt="Dr. Emily Davis"
+                />
+                <div class="doctor-social">
+                  <a href="#"><i class="fab fa-facebook-f"></i></a>
+                  <a href="#"><i class="fab fa-twitter"></i></a>
+                  <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                </div>
+              </div>
+              <div class="doctor-info">
+                <div class="doctor-info-top">
+                  <h4>Dr. Emily Davis</h4>
+                  <span class="doctor-spec">Pediatrician</span>
+                </div>
+                <div class="doctor-meta">
+                  <span><i class="fas fa-star"></i> 4.9</span>
+                  <span><i class="fas fa-user-friends"></i> 1.5k Patients</span>
+                </div>
+                <a href="#" class="doctor-appt-btn">Book Appointment</a>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-3 col-md-6">
+            <div class="doctor-card">
+              <div class="doctor-img">
+                <img
+                  src="https://images.unsplash.com/photo-1622253692010-333f2da6031d?w=400&q=80"
+                  alt="Dr. Robert Wilson"
+                />
+                <div class="doctor-social">
+                  <a href="#"><i class="fab fa-facebook-f"></i></a>
+                  <a href="#"><i class="fab fa-twitter"></i></a>
+                  <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                </div>
+              </div>
+              <div class="doctor-info">
+                <div class="doctor-info-top">
+                  <h4>Dr. Robert Wilson</h4>
+                  <span class="doctor-spec">Orthopedic Surgeon</span>
+                </div>
+                <div class="doctor-meta">
+                  <span><i class="fas fa-star"></i> 4.7</span>
+                  <span><i class="fas fa-user-friends"></i> 870 Patients</span>
+                </div>
+                <a href="#" class="doctor-appt-btn">Book Appointment</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- ===== END DOCTORS ===== -->
+
+    <!-- ===== TESTIMONIALS ===== -->
+    <section class="testimonials-area section-pad">
+      <div class="testi-bg-shape"></div>
+      <div class="container">
+        <div class="row justify-content-between align-items-end mb-5">
+          <div class="col-lg-6">
+            <h5 class="sub-title">Testimonials</h5>
+            <h2 class="section-h2 mb-0" style="color: #fff">
+              What Our Patients
+              <span class="testi-heading-accent">Say About Us</span>
+            </h2>
+          </div>
+          <div class="col-lg-auto mt-3 mt-lg-0 d-flex align-items-center gap-3">
+            <div class="testi-rating-badge">
+              <div class="testi-stars">
+                <i class="fas fa-star"></i><i class="fas fa-star"></i
+                ><i class="fas fa-star"></i><i class="fas fa-star"></i
+                ><i class="fas fa-star"></i>
+              </div>
+              <span>4.9 / 5 Average Rating</span>
+            </div>
+          </div>
+        </div>
+        <div class="row g-4">
+          <div class="col-lg-3 col-md-6">
+            <div class="testi-card">
+              <div class="testi-quote"><i class="fas fa-quote-left"></i></div>
+              <div class="testi-stars-sm">
+                <i class="fas fa-star"></i><i class="fas fa-star"></i
+                ><i class="fas fa-star"></i><i class="fas fa-star"></i
+                ><i class="fas fa-star"></i>
+              </div>
+              <p>
+                The doctors here are incredibly skilled and compassionate. I
+                felt cared for every step of the way during my surgery recovery.
+              </p>
+              <div class="testi-provider">
+                <img
+                  src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=80&q=80"
+                  alt="Jonathan Doe"
+                />
+                <div>
+                  <h5>Jonathan Doe</h5>
+                  <span>Patient of <strong>Surgery</strong></span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-3 col-md-6">
+            <div class="testi-card">
+              <div class="testi-quote"><i class="fas fa-quote-left"></i></div>
+              <div class="testi-stars-sm">
+                <i class="fas fa-star"></i><i class="fas fa-star"></i
+                ><i class="fas fa-star"></i><i class="fas fa-star"></i
+                ><i class="fas fa-star"></i>
+              </div>
+              <p>
+                Outstanding cardiology team! They diagnosed my condition quickly
+                and the treatment plan changed my life. Truly world-class care.
+              </p>
+              <div class="testi-provider">
+                <img
+                  src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=80&q=80"
+                  alt="Sarah Williams"
+                />
+                <div>
+                  <h5>Sarah Williams</h5>
+                  <span>Patient of <strong>Cardiology</strong></span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-3 col-md-6">
+            <div class="testi-card">
+              <div class="testi-quote"><i class="fas fa-quote-left"></i></div>
+              <div class="testi-stars-sm">
+                <i class="fas fa-star"></i><i class="fas fa-star"></i
+                ><i class="fas fa-star"></i><i class="fas fa-star"></i
+                ><i class="fas fa-star-half-alt"></i>
+              </div>
+              <p>
+                My dental experience was painless and professional. The staff
+                made me feel completely at ease. Highly recommend this clinic!
+              </p>
+              <div class="testi-provider">
+                <img
+                  src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=80&q=80"
+                  alt="Emily Carter"
+                />
+                <div>
+                  <h5>Emily Carter</h5>
+                  <span>Patient of <strong>Dental Care</strong></span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-3 col-md-6">
+            <div class="testi-card">
+              <div class="testi-quote"><i class="fas fa-quote-left"></i></div>
+              <div class="testi-stars-sm">
+                <i class="fas fa-star"></i><i class="fas fa-star"></i
+                ><i class="fas fa-star"></i><i class="fas fa-star"></i
+                ><i class="fas fa-star"></i>
+              </div>
+              <p>
+                The neurology department gave me answers after years of
+                uncertainty. The team's expertise and empathy are second to
+                none.
+              </p>
+              <div class="testi-provider">
+                <img
+                  src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=80&q=80"
+                  alt="Robert Miles"
+                />
+                <div>
+                  <h5>Robert Miles</h5>
+                  <span>Patient of <strong>Neurology</strong></span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- ===== END TESTIMONIALS ===== -->
+
+    <!-- ===== BLOG ===== -->
+    <section class="blog-area section-pad">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-8 offset-lg-2">
+            <div class="section-title text-center">
+              <h5 class="sub-title">News</h5>
+              <h2>Latest Blog</h2>
+              <p>
+                While mirth large of on front. Ye he greater related adapted
+                proceed entered an. Through it examine express promise no. Past
+                add size game cold girl off how old.
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="row g-4">
+          <div class="col-lg-4 col-md-6">
+            <div class="blog-card">
+              <div class="blog-thumb">
+                <a href="#"
+                  ><img
+                    src="https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?w=600&q=80"
+                    alt="Blog"
+                /></a>
+                <span class="blog-date">12 Jul</span>
+              </div>
+              <div class="blog-info">
+                <div class="blog-tags">
+                  <a href="#">Health</a>
+                  <a href="#">Patient</a>
+                </div>
+                <h4>
+                  <a href="#"
+                    >Enjoyed me settled mr respect no spirits civilly.</a
+                  >
+                </h4>
+                <div class="blog-meta">
+                  <a href="#"
+                    ><img
+                      src="https://images.unsplash.com/photo-1559839734-2b71ea197ec2?w=40&q=80"
+                      alt="Author"
+                    /><span>Author</span></a
+                  >
+                  <a href="#"><i class="fas fa-comments"></i> 12 Comments</a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-4 col-md-6">
+            <div class="blog-card">
+              <div class="blog-thumb">
+                <a href="#"
+                  ><img
+                    src="https://images.unsplash.com/photo-1551190822-a9333d879b1f?w=600&q=80"
+                    alt="Blog"
+                /></a>
+                <span class="blog-date">05 Aug</span>
+              </div>
+              <div class="blog-info">
+                <div class="blog-tags">
+                  <a href="#">Test</a>
+                  <a href="#">Doctor</a>
+                </div>
+                <h4>
+                  <a href="#"
+                    >Suitable settling attended no doubtful feelings.</a
+                  >
+                </h4>
+                <div class="blog-meta">
+                  <a href="#"
+                    ><img
+                      src="https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?w=40&q=80"
+                      alt="Author"
+                    /><span>Author</span></a
+                  >
+                  <a href="#"><i class="fas fa-comments"></i> 24 Comments</a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-4 col-md-6">
+            <div class="blog-card">
+              <div class="blog-thumb">
+                <a href="#"
+                  ><img
+                    src="https://images.unsplash.com/photo-1631217868264-e5b90bb7e133?w=600&q=80"
+                    alt="Blog"
+                /></a>
+                <span class="blog-date">27 Dec</span>
+              </div>
+              <div class="blog-info">
+                <div class="blog-tags">
+                  <a href="#">Patient</a>
+                </div>
+                <h4>
+                  <a href="#">Unwilling sportsmen he in questions september.</a>
+                </h4>
+                <div class="blog-meta">
+                  <a href="#"
+                    ><img
+                      src="https://images.unsplash.com/photo-1594824476967-48c8b964273f?w=40&q=80"
+                      alt="Author"
+                    /><span>Author</span></a
+                  >
+                  <a href="#"><i class="fas fa-comments"></i> 07 Comments</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- ===== END BLOG ===== -->
+
+    <!-- ===== CTA ===== -->
+    <section class="cta-area section-pad text-center text-white">
+      <div class="container">
+        <div class="row justify-content-center">
+          <div class="col-lg-7">
+            <h2>Need Emergency Medical Help?</h2>
+            <p>
+              Our emergency team is available 24/7. Don't hesitate to reach out
+              — your health is our priority.
+            </p>
+            <div class="mt-4 d-flex flex-wrap justify-content-center gap-3">
+              <a
+                href="tel:+14165551234"
+                class="btn btn-light btn-lg rounded-pill px-5 fw-semibold"
+              >
+                <i class="fas fa-phone me-2"></i>Call Now
+              </a>
+              <a href="#" class="btn btn-outline-light btn-lg rounded-pill px-5"
+                >Book Appointment</a
+              >
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- ===== END CTA ===== -->
+
+    <!-- ===== FOOTER ===== -->
+    <div id="footer-placeholder"></div>
+    <!-- ===== END FOOTER ===== -->
+
+    <!-- Bootstrap 5 JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Custom JS -->
+    <script src="assets/js/script.js"></script>
+  </body>
+</html>
