@@ -1,0 +1,223 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Login | Stackly</title>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="assets/css/styles.css" />
+    <link rel="stylesheet" href="assets/css/auth.css" />
+  </head>
+  <body class="auth-body">
+    <div class="auth-wrap">
+      <!-- ── Brand Panel ── -->
+      <div class="auth-brand-panel">
+        <div class="auth-brand-inner">
+          <div class="auth-logo-icon">
+            <i class="fas fa-plus-circle"></i>
+          </div>
+          <h2>Stack<span>ly</span></h2>
+          <p class="auth-brand-tagline">Your trusted healthcare partner</p>
+
+          <ul class="auth-features">
+            <li>
+              <i class="fas fa-stethoscope"></i>
+              Expert Doctors & Specialists
+            </li>
+            <li>
+              <i class="fas fa-calendar-check"></i>
+              Easy Appointment Booking
+            </li>
+            <li>
+              <i class="fas fa-shield-halved"></i>
+              Secure & Confidential Records
+            </li>
+            <li>
+              <i class="fas fa-clock"></i>
+              24 / 7 Emergency Support
+            </li>
+          </ul>
+
+          <!-- ECG Line SVG -->
+          <svg
+            class="auth-ecg"
+            viewBox="0 0 300 36"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <polyline
+              points="0,18 40,18 55,18 60,4 65,32 70,4 75,32 80,18 120,18 135,18 140,8 145,28 150,18 200,18 215,18 220,6 225,30 230,6 235,30 240,18 280,18 300,18"
+              stroke="white"
+              stroke-width="2"
+              stroke-linejoin="round"
+              fill="none"
+            />
+          </svg>
+        </div>
+      </div>
+
+      <!-- ── Form Panel ── -->
+      <div class="auth-form-panel">
+        <div class="auth-card">
+          <div class="mb-4">
+            <a
+              href="index.html"
+              class="text-decoration-none text-muted small fw-bold"
+            >
+              <i class="fas fa-arrow-left me-2"></i> Back to Home
+            </a>
+          </div>
+          <div class="auth-header">
+            <div class="auth-step-badge">
+              <i class="fas fa-lock"></i> Secure Login
+            </div>
+            <h1 class="auth-title">Welcome Back 👋</h1>
+            <p class="auth-subtitle">
+              Sign in to access your Stackly dashboard
+            </p>
+          </div>
+
+          <form class="auth-form">
+            <!-- Role Selector -->
+            <div class="mb-3">
+              <label class="form-label">Login as</label>
+              <div class="role-pills">
+                <div class="role-pill active" data-role="patient">
+                  <i class="fas fa-user-injured"></i> Patient
+                </div>
+                <div class="role-pill" data-role="doctor">
+                  <i class="fas fa-user-doctor"></i> Doctor
+                </div>
+                <div class="role-pill" data-role="staff">
+                  <i class="fas fa-user-nurse"></i> Staff
+                </div>
+                <div class="role-pill" data-role="admin">
+                  <i class="fas fa-user-shield"></i> Admin
+                </div>
+              </div>
+            </div>
+
+            <!-- Email -->
+            <div class="mb-3">
+              <label class="form-label">Email Address</label>
+              <div class="input-icon-wrap">
+                <i class="fas fa-envelope field-icon"></i>
+                <input
+                  type="email"
+                  class="form-control"
+                  placeholder="name@example.com"
+                  required
+                  oninvalid="
+                    this.setCustomValidity('Please fill in your Email Address')
+                  "
+                  oninput="this.setCustomValidity('')"
+                />
+              </div>
+            </div>
+
+            <!-- Password -->
+            <div class="mb-2">
+              <div class="d-flex justify-content-between align-items-center">
+                <label class="form-label mb-0">Password</label>
+                <a
+                  href="#"
+                  class="text-primary text-decoration-none"
+                  style="font-size: 12px; font-weight: 600"
+                  >Forgot Password?</a
+                >
+              </div>
+              <div class="input-icon-wrap mt-2" style="position: relative">
+                <i class="fas fa-lock field-icon"></i>
+                <input
+                  type="password"
+                  class="form-control"
+                  id="loginPass"
+                  placeholder="••••••••"
+                  required
+                  oninvalid="
+                    this.setCustomValidity('Please fill in your Password')
+                  "
+                  oninput="this.setCustomValidity('')"
+                />
+                <button
+                  type="button"
+                  class="pass-toggle"
+                  onclick="togglePass('loginPass', this)"
+                >
+                  <i class="fas fa-eye"></i>
+                </button>
+              </div>
+            </div>
+
+            <!-- Remember -->
+            <div class="mb-3 form-check mt-2">
+              <input type="checkbox" class="form-check-input" id="rememberMe" />
+              <label class="form-check-label small text-muted" for="rememberMe"
+                >Remember me on this device</label
+              >
+            </div>
+
+            <button type="submit" class="btn auth-btn">
+              Sign In <i class="fas fa-arrow-right ms-2"></i>
+            </button>
+          </form>
+
+          <div class="auth-footer">
+            <p class="mb-0">
+              Don't have an account?
+              <a href="register.html">Create Account</a>
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- /.auth-wrap -->
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="assets/js/script.js"></script>
+    <script>
+      document.querySelectorAll(".role-pill").forEach((pill) => {
+        pill.addEventListener("click", () => {
+          pill
+            .closest(".role-pills")
+            .querySelectorAll(".role-pill")
+            .forEach((p) => p.classList.remove("active"));
+          pill.classList.add("active");
+        });
+      });
+
+      function togglePass(id, btn) {
+        const input = document.getElementById(id);
+        const icon = btn.querySelector("i");
+        if (input.type === "password") {
+          input.type = "text";
+          icon.classList.replace("fa-eye", "fa-eye-slash");
+        } else {
+          input.type = "password";
+          icon.classList.replace("fa-eye-slash", "fa-eye");
+        }
+      }
+
+      document
+        .querySelector(".auth-form")
+        .addEventListener("submit", function (e) {
+          e.preventDefault();
+          const role = document.querySelector(".role-pill.active").dataset.role;
+          const email = document.querySelector('input[type="email"]').value;
+          sessionStorage.setItem("user", JSON.stringify({ email, role }));
+          window.location.href = "dashboard.html";
+        });
+    </script>
+  </body>
+</html>

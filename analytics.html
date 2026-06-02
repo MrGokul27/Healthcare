@@ -1,0 +1,332 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Analytics | Stackly</title>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="assets/css/dashboard.css" />
+    <link rel="stylesheet" href="assets/css/pages.css" />
+  </head>
+  <body>
+    <aside class="db-sidebar" id="sidebar"></aside>
+    <div class="db-main">
+      <header class="db-topbar">
+        <div class="d-flex align-items-center gap-3">
+          <button
+            class="topbar-icon-btn d-lg-none"
+            onclick="
+              document.getElementById('sidebar').classList.toggle('open')
+            "
+          >
+            <i class="fas fa-bars"></i>
+          </button>
+          <div class="db-topbar-left">
+            <h5>Analytics</h5>
+            <p id="topbarSub">—</p>
+          </div>
+        </div>
+        <div class="db-topbar-right">
+          <div class="topbar-icon-btn">
+            <i class="fas fa-magnifying-glass"></i>
+          </div>
+          <div class="topbar-icon-btn">
+            <i class="fas fa-bell"></i><span class="dot"></span>
+          </div>
+          <div class="topbar-user">
+            <div class="avatar" id="topbarAvatar"></div>
+            <span class="uname" id="topbarName">—</span>
+          </div>
+        </div>
+      </header>
+
+      <main class="db-content">
+        <div class="page-header-row">
+          <div>
+            <h4 class="page-title">
+              <i class="fas fa-chart-bar"></i> Analytics
+            </h4>
+            <p class="page-sub">Hospital performance metrics and insights</p>
+          </div>
+          <div style="display: flex; gap: 10px">
+            <select class="filter-select">
+              <option>This Month</option>
+              <option>Last 3 Months</option>
+              <option>This Year</option>
+            </select>
+            <button class="btn-primary-action">
+              <i class="fas fa-download"></i> Export
+            </button>
+          </div>
+        </div>
+
+        <!-- KPI Cards -->
+        <div class="mini-stats" style="grid-template-columns: repeat(4, 1fr)">
+          <div class="mini-stat blue">
+            <i class="fas fa-users"></i>
+            <div>
+              <span class="ms-val">128</span
+              ><span class="ms-lbl">Total Users</span
+              ><span class="ms-trend up">↑ 8 this month</span>
+            </div>
+          </div>
+          <div class="mini-stat green">
+            <i class="fas fa-calendar-check"></i>
+            <div>
+              <span class="ms-val">314</span
+              ><span class="ms-lbl">Appointments</span
+              ><span class="ms-trend up">↑ 12%</span>
+            </div>
+          </div>
+          <div class="mini-stat orange">
+            <i class="fas fa-bed-pulse"></i>
+            <div>
+              <span class="ms-val">42</span
+              ><span class="ms-lbl">Occupied Beds</span
+              ><span class="ms-trend down">↓ 5%</span>
+            </div>
+          </div>
+          <div class="mini-stat purple">
+            <i class="fas fa-chart-line"></i>
+            <div>
+              <span class="ms-val">94%</span
+              ><span class="ms-lbl">System Uptime</span
+              ><span class="ms-trend up">Stable</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="row g-4">
+          <!-- Appointments Bar Chart (CSS-based) -->
+          <div class="col-lg-8">
+            <div class="db-panel">
+              <div class="db-panel-header">
+                <h6>
+                  <i class="fas fa-chart-bar me-2 text-primary"></i>Appointments
+                  This Month
+                </h6>
+              </div>
+              <div class="chart-area">
+                <div class="bar-chart">
+                  <div class="bar-wrap">
+                    <div class="bar" style="height: 55%">
+                      <span class="bar-val">55</span>
+                    </div>
+                    <span class="bar-lbl">Jan 1</span>
+                  </div>
+                  <div class="bar-wrap">
+                    <div class="bar" style="height: 70%">
+                      <span class="bar-val">70</span>
+                    </div>
+                    <span class="bar-lbl">Jan 7</span>
+                  </div>
+                  <div class="bar-wrap">
+                    <div class="bar" style="height: 45%">
+                      <span class="bar-val">45</span>
+                    </div>
+                    <span class="bar-lbl">Jan 14</span>
+                  </div>
+                  <div class="bar-wrap">
+                    <div class="bar" style="height: 88%">
+                      <span class="bar-val">88</span>
+                    </div>
+                    <span class="bar-lbl">Jan 21</span>
+                  </div>
+                  <div class="bar-wrap">
+                    <div class="bar active" style="height: 78%">
+                      <span class="bar-val">78</span>
+                    </div>
+                    <span class="bar-lbl">Jan 28</span>
+                  </div>
+                  <div class="bar-wrap">
+                    <div class="bar" style="height: 38%">
+                      <span class="bar-val">38</span>
+                    </div>
+                    <span class="bar-lbl">Feb</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Department Distribution -->
+          <div class="col-lg-4">
+            <div class="db-panel">
+              <div class="db-panel-header">
+                <h6>
+                  <i class="fas fa-hospital me-2 text-primary"></i>By Department
+                </h6>
+              </div>
+              <div class="dept-list">
+                <div class="dept-row">
+                  <span class="dept-name">Cardiology</span>
+                  <div class="dept-bar-wrap">
+                    <div class="dept-bar" style="width: 72%"></div>
+                  </div>
+                  <span class="dept-pct">72%</span>
+                </div>
+                <div class="dept-row">
+                  <span class="dept-name">General Medicine</span>
+                  <div class="dept-bar-wrap">
+                    <div class="dept-bar green" style="width: 58%"></div>
+                  </div>
+                  <span class="dept-pct">58%</span>
+                </div>
+                <div class="dept-row">
+                  <span class="dept-name">Neurology</span>
+                  <div class="dept-bar-wrap">
+                    <div class="dept-bar purple" style="width: 44%"></div>
+                  </div>
+                  <span class="dept-pct">44%</span>
+                </div>
+                <div class="dept-row">
+                  <span class="dept-name">Orthopedics</span>
+                  <div class="dept-bar-wrap">
+                    <div class="dept-bar orange" style="width: 36%"></div>
+                  </div>
+                  <span class="dept-pct">36%</span>
+                </div>
+                <div class="dept-row">
+                  <span class="dept-name">Dermatology</span>
+                  <div class="dept-bar-wrap">
+                    <div class="dept-bar teal" style="width: 28%"></div>
+                  </div>
+                  <span class="dept-pct">28%</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Patient Flow -->
+          <div class="col-lg-6">
+            <div class="db-panel">
+              <div class="db-panel-header">
+                <h6>
+                  <i class="fas fa-people-arrows me-2 text-primary"></i>Patient
+                  Flow (Today)
+                </h6>
+              </div>
+              <div class="flow-table">
+                <div class="flow-row">
+                  <span class="flow-label">Walk-ins</span>
+                  <div class="flow-bar-wrap">
+                    <div class="flow-bar blue" style="width: 60%"></div>
+                  </div>
+                  <span class="flow-val">15</span>
+                </div>
+                <div class="flow-row">
+                  <span class="flow-label">Scheduled</span>
+                  <div class="flow-bar-wrap">
+                    <div class="flow-bar green" style="width: 85%"></div>
+                  </div>
+                  <span class="flow-val">42</span>
+                </div>
+                <div class="flow-row">
+                  <span class="flow-label">Teleconsults</span>
+                  <div class="flow-bar-wrap">
+                    <div class="flow-bar purple" style="width: 30%"></div>
+                  </div>
+                  <span class="flow-val">8</span>
+                </div>
+                <div class="flow-row">
+                  <span class="flow-label">Discharged</span>
+                  <div class="flow-bar-wrap">
+                    <div class="flow-bar orange" style="width: 50%"></div>
+                  </div>
+                  <span class="flow-val">12</span>
+                </div>
+                <div class="flow-row">
+                  <span class="flow-label">Admitted</span>
+                  <div class="flow-bar-wrap">
+                    <div class="flow-bar red" style="width: 25%"></div>
+                  </div>
+                  <span class="flow-val">6</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Top Doctors -->
+          <div class="col-lg-6">
+            <div class="db-panel">
+              <div class="db-panel-header">
+                <h6>
+                  <i class="fas fa-user-doctor me-2 text-primary"></i>Top
+                  Doctors (This Month)
+                </h6>
+              </div>
+              <div class="top-doctors">
+                <div class="td-row">
+                  <span class="td-rank">1</span>
+                  <div class="td-avatar">PS</div>
+                  <div class="td-info">
+                    <div class="td-name">Dr. Priya Sharma</div>
+                    <div class="td-dept">Cardiology</div>
+                  </div>
+                  <span class="td-count">68 patients</span>
+                </div>
+                <div class="td-row">
+                  <span class="td-rank">2</span>
+                  <div class="td-avatar">AI</div>
+                  <div class="td-info">
+                    <div class="td-name">Dr. Ananya Iyer</div>
+                    <div class="td-dept">General Medicine</div>
+                  </div>
+                  <span class="td-count">54 patients</span>
+                </div>
+                <div class="td-row">
+                  <span class="td-rank">3</span>
+                  <div class="td-avatar">RM</div>
+                  <div class="td-info">
+                    <div class="td-name">Dr. Raj Mehta</div>
+                    <div class="td-dept">Neurology</div>
+                  </div>
+                  <span class="td-count">47 patients</span>
+                </div>
+                <div class="td-row">
+                  <span class="td-rank">4</span>
+                  <div class="td-avatar">SN</div>
+                  <div class="td-info">
+                    <div class="td-name">Dr. Suresh Nair</div>
+                    <div class="td-dept">Orthopedics</div>
+                  </div>
+                  <span class="td-count">39 patients</span>
+                </div>
+                <div class="td-row">
+                  <span class="td-rank">5</span>
+                  <div class="td-avatar">MP</div>
+                  <div class="td-info">
+                    <div class="td-name">Dr. Meena Pillai</div>
+                    <div class="td-dept">Dermatology</div>
+                  </div>
+                  <span class="td-count">31 patients</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </main>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="assets/js/dashboard-common.js"></script>
+    <script>
+      const raw = sessionStorage.getItem("user");
+      if (!raw) window.location.href = "login.html";
+      const user = JSON.parse(raw);
+      initSidebar(user, "Analytics");
+      initTopbar(user);
+    </script>
+  </body>
+</html>

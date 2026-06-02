@@ -1,0 +1,301 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Appointments | Stackly</title>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="assets/css/dashboard.css" />
+    <link rel="stylesheet" href="assets/css/pages.css" />
+  </head>
+  <body>
+    <aside class="db-sidebar" id="sidebar"></aside>
+    <div class="db-main">
+      <header class="db-topbar">
+        <div class="d-flex align-items-center gap-3">
+          <button
+            class="topbar-icon-btn d-lg-none"
+            onclick="
+              document.getElementById('sidebar').classList.toggle('open')
+            "
+          >
+            <i class="fas fa-bars"></i>
+          </button>
+          <div class="db-topbar-left">
+            <h5>Appointments</h5>
+            <p id="topbarSub">—</p>
+          </div>
+        </div>
+        <div class="db-topbar-right">
+          <div class="topbar-icon-btn">
+            <i class="fas fa-magnifying-glass"></i>
+          </div>
+          <div class="topbar-icon-btn">
+            <i class="fas fa-bell"></i><span class="dot"></span>
+          </div>
+          <div class="topbar-user">
+            <div class="avatar" id="topbarAvatar"></div>
+            <span class="uname" id="topbarName">—</span>
+          </div>
+        </div>
+      </header>
+
+      <main class="db-content">
+        <div class="page-header-row">
+          <div>
+            <h4 class="page-title">
+              <i class="fas fa-calendar-check"></i> Appointments
+            </h4>
+            <p class="page-sub" id="pageSubtitle">
+              View and manage your appointments
+            </p>
+          </div>
+          <button class="btn-primary-action" id="newApptBtn">
+            <i class="fas fa-plus"></i> New Appointment
+          </button>
+        </div>
+
+        <!-- Filter Tabs -->
+        <div class="filter-tabs">
+          <button class="ftab active" onclick="filterAppt('all', this)">
+            All
+          </button>
+          <button class="ftab" onclick="filterAppt('upcoming', this)">
+            Upcoming
+          </button>
+          <button class="ftab" onclick="filterAppt('completed', this)">
+            Completed
+          </button>
+          <button class="ftab" onclick="filterAppt('cancelled', this)">
+            Cancelled
+          </button>
+        </div>
+
+        <!-- Appointments Grid -->
+        <div class="appt-grid" id="apptGrid"></div>
+      </main>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="assets/js/dashboard-common.js"></script>
+    <script>
+      const raw = sessionStorage.getItem("user");
+      if (!raw) window.location.href = "login.html";
+      const user = JSON.parse(raw);
+
+      initSidebar(user, "Appointments");
+      initTopbar(user);
+
+      const patientAppts = [
+        {
+          id: "APT-001",
+          doctor: "Dr. Priya Sharma",
+          dept: "Cardiology",
+          date: "28 Jan 2025",
+          time: "10:30 AM",
+          status: "upcoming",
+          mode: "In-person",
+          avatar: "PS",
+        },
+        {
+          id: "APT-002",
+          doctor: "Dr. Raj Mehta",
+          dept: "Neurology",
+          date: "02 Feb 2025",
+          time: "02:00 PM",
+          status: "upcoming",
+          mode: "Teleconsult",
+          avatar: "RM",
+        },
+        {
+          id: "APT-003",
+          doctor: "Dr. Ananya Iyer",
+          dept: "General Medicine",
+          date: "15 Jan 2025",
+          time: "11:00 AM",
+          status: "completed",
+          mode: "In-person",
+          avatar: "AI",
+        },
+        {
+          id: "APT-004",
+          doctor: "Dr. Suresh Nair",
+          dept: "Orthopedics",
+          date: "10 Jan 2025",
+          time: "09:00 AM",
+          status: "completed",
+          mode: "In-person",
+          avatar: "SN",
+        },
+        {
+          id: "APT-005",
+          doctor: "Dr. Meena Pillai",
+          dept: "Dermatology",
+          date: "05 Jan 2025",
+          time: "03:30 PM",
+          status: "cancelled",
+          mode: "In-person",
+          avatar: "MP",
+        },
+      ];
+
+      const doctorAppts = [
+        {
+          id: "APT-101",
+          patient: "Ravi Kumar",
+          age: "45M",
+          date: "28 Jan 2025",
+          time: "09:00 AM",
+          status: "upcoming",
+          reason: "Chest Pain Follow-up",
+          avatar: "RK",
+        },
+        {
+          id: "APT-102",
+          patient: "Lakshmi Devi",
+          age: "32F",
+          date: "28 Jan 2025",
+          time: "10:00 AM",
+          status: "upcoming",
+          reason: "Routine Checkup",
+          avatar: "LD",
+        },
+        {
+          id: "APT-103",
+          patient: "Mohan Das",
+          age: "58M",
+          date: "28 Jan 2025",
+          time: "11:30 AM",
+          status: "upcoming",
+          reason: "BP Monitoring",
+          avatar: "MD",
+        },
+        {
+          id: "APT-104",
+          patient: "Sunita Rao",
+          age: "29F",
+          date: "27 Jan 2025",
+          time: "02:00 PM",
+          status: "completed",
+          reason: "Fever & Cold",
+          avatar: "SR",
+        },
+        {
+          id: "APT-105",
+          patient: "Arun Joshi",
+          age: "40M",
+          date: "26 Jan 2025",
+          time: "09:30 AM",
+          status: "completed",
+          reason: "Post-Surgery Review",
+          avatar: "AJ",
+        },
+        {
+          id: "APT-106",
+          patient: "Preethi Menon",
+          age: "36F",
+          date: "25 Jan 2025",
+          time: "03:00 PM",
+          status: "cancelled",
+          reason: "Skin Allergy",
+          avatar: "PM",
+        },
+      ];
+
+      const role = user.role;
+      const appts = role === "patient" ? patientAppts : doctorAppts;
+
+      document.getElementById("pageSubtitle").textContent =
+        role === "patient"
+          ? "Your scheduled medical appointments"
+          : role === "doctor"
+            ? "Patient appointments in your schedule"
+            : "All hospital appointments";
+
+      document.getElementById("newApptBtn").innerHTML =
+        role === "patient"
+          ? '<i class="fas fa-plus"></i> Book Appointment'
+          : '<i class="fas fa-plus"></i> Add Appointment';
+
+      let currentFilter = "all";
+
+      function filterAppt(f, btn) {
+        currentFilter = f;
+        document
+          .querySelectorAll(".ftab")
+          .forEach((b) => b.classList.remove("active"));
+        btn.classList.add("active");
+        renderAppts();
+      }
+
+      function renderAppts() {
+        const grid = document.getElementById("apptGrid");
+        const filtered =
+          currentFilter === "all"
+            ? appts
+            : appts.filter((a) => a.status === currentFilter);
+        if (!filtered.length) {
+          grid.innerHTML = `<div class="empty-state"><i class="fas fa-calendar-xmark"></i><p>No ${currentFilter} appointments</p></div>`;
+          return;
+        }
+        grid.innerHTML = filtered
+          .map((a) => {
+            const statusColor =
+              a.status === "upcoming"
+                ? "#1976d2"
+                : a.status === "completed"
+                  ? "#2e7d32"
+                  : "#e53935";
+            const statusBg =
+              a.status === "upcoming"
+                ? "#e3f2fd"
+                : a.status === "completed"
+                  ? "#e8f5e9"
+                  : "#fce4ec";
+            const isPatient = role === "patient";
+            return `
+          <div class="appt-card">
+            <div class="appt-card-top">
+              <div class="appt-avatar">${isPatient ? a.avatar : a.avatar}</div>
+              <div class="appt-main">
+                <div class="appt-name">${isPatient ? a.doctor : a.patient}</div>
+                <div class="appt-sub">${isPatient ? a.dept : a.age + " · ' + a.reason"}</div>
+              </div>
+              <span class="appt-status" style="background:${statusBg};color:${statusColor}">${a.status}</span>
+            </div>
+            <div class="appt-meta">
+              <span><i class="fas fa-calendar"></i> ${a.date}</span>
+              <span><i class="fas fa-clock"></i> ${a.time}</span>
+              ${isPatient ? `<span><i class="fas fa-${a.mode === "Teleconsult" ? "video" : "hospital"}"></i> ${a.mode}</span>` : ""}
+            </div>
+            <div class="appt-id">ID: ${a.id}</div>
+            ${
+              a.status === "upcoming"
+                ? `
+            <div class="appt-actions">
+              <button class="appt-btn outline"><i class="fas fa-pen"></i> Reschedule</button>
+              <button class="appt-btn danger"><i class="fas fa-xmark"></i> Cancel</button>
+              ${role !== "patient" ? `<button class="appt-btn primary"><i class="fas fa-stethoscope"></i> Start</button>` : ""}
+            </div>`
+                : ""
+            }
+          </div>`;
+          })
+          .join("");
+      }
+
+      renderAppts();
+    </script>
+  </body>
+</html>

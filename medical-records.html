@@ -1,0 +1,250 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Medical Records | Stackly</title>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="assets/css/dashboard.css" />
+    <link rel="stylesheet" href="assets/css/pages.css" />
+  </head>
+  <body>
+    <aside class="db-sidebar" id="sidebar"></aside>
+    <div class="db-main">
+      <header class="db-topbar">
+        <div class="d-flex align-items-center gap-3">
+          <button
+            class="topbar-icon-btn d-lg-none"
+            onclick="
+              document.getElementById('sidebar').classList.toggle('open')
+            "
+          >
+            <i class="fas fa-bars"></i>
+          </button>
+          <div class="db-topbar-left">
+            <h5>Medical Records</h5>
+            <p id="topbarSub">—</p>
+          </div>
+        </div>
+        <div class="db-topbar-right">
+          <div class="topbar-icon-btn">
+            <i class="fas fa-magnifying-glass"></i>
+          </div>
+          <div class="topbar-icon-btn">
+            <i class="fas fa-bell"></i><span class="dot"></span>
+          </div>
+          <div class="topbar-user">
+            <div class="avatar" id="topbarAvatar"></div>
+            <span class="uname" id="topbarName">—</span>
+          </div>
+        </div>
+      </header>
+
+      <main class="db-content">
+        <div class="page-header-row">
+          <div>
+            <h4 class="page-title">
+              <i class="fas fa-file-medical"></i> Medical Records
+            </h4>
+            <p class="page-sub">Your complete health history and documents</p>
+          </div>
+          <button class="btn-primary-action">
+            <i class="fas fa-upload"></i> Upload Record
+          </button>
+        </div>
+
+        <!-- Summary Cards -->
+        <div class="mini-stats">
+          <div class="mini-stat blue">
+            <i class="fas fa-file-waveform"></i>
+            <div>
+              <span class="ms-val">12</span
+              ><span class="ms-lbl">Total Records</span>
+            </div>
+          </div>
+          <div class="mini-stat green">
+            <i class="fas fa-vial"></i>
+            <div>
+              <span class="ms-val">5</span
+              ><span class="ms-lbl">Lab Results</span>
+            </div>
+          </div>
+          <div class="mini-stat orange">
+            <i class="fas fa-x-ray"></i>
+            <div>
+              <span class="ms-val">3</span><span class="ms-lbl">Imaging</span>
+            </div>
+          </div>
+          <div class="mini-stat purple">
+            <i class="fas fa-file-prescription"></i>
+            <div>
+              <span class="ms-val">4</span
+              ><span class="ms-lbl">Prescriptions</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Records List -->
+        <div class="db-panel">
+          <div class="db-panel-header">
+            <h6>
+              <i class="fas fa-folder-open me-2 text-primary"></i>All Records
+            </h6>
+            <div class="panel-filters">
+              <select class="filter-select">
+                <option>All Types</option>
+                <option>Lab Results</option>
+                <option>Imaging</option>
+                <option>Prescriptions</option>
+                <option>Discharge Summary</option>
+              </select>
+            </div>
+          </div>
+          <div class="records-list">
+            <div class="record-item">
+              <div class="record-icon blue"><i class="fas fa-vial"></i></div>
+              <div class="record-info">
+                <div class="record-name">Complete Blood Count (CBC)</div>
+                <div class="record-meta">
+                  Lab Result · Dr. Priya Sharma · Metropolis Labs
+                </div>
+              </div>
+              <div class="record-date">22 Jan 2025</div>
+              <span class="record-tag green">Normal</span>
+              <div class="record-actions">
+                <button class="icon-btn" title="View">
+                  <i class="fas fa-eye"></i>
+                </button>
+                <button class="icon-btn" title="Download">
+                  <i class="fas fa-download"></i>
+                </button>
+              </div>
+            </div>
+            <div class="record-item">
+              <div class="record-icon orange"><i class="fas fa-x-ray"></i></div>
+              <div class="record-info">
+                <div class="record-name">Chest X-Ray Report</div>
+                <div class="record-meta">
+                  Imaging · Dr. Raj Mehta · City Diagnostics
+                </div>
+              </div>
+              <div class="record-date">18 Jan 2025</div>
+              <span class="record-tag yellow">Review</span>
+              <div class="record-actions">
+                <button class="icon-btn" title="View">
+                  <i class="fas fa-eye"></i>
+                </button>
+                <button class="icon-btn" title="Download">
+                  <i class="fas fa-download"></i>
+                </button>
+              </div>
+            </div>
+            <div class="record-item">
+              <div class="record-icon purple">
+                <i class="fas fa-file-prescription"></i>
+              </div>
+              <div class="record-info">
+                <div class="record-name">Prescription – Metformin 500mg</div>
+                <div class="record-meta">
+                  Prescription · Dr. Ananya Iyer · General Medicine
+                </div>
+              </div>
+              <div class="record-date">15 Jan 2025</div>
+              <span class="record-tag blue">Active</span>
+              <div class="record-actions">
+                <button class="icon-btn" title="View">
+                  <i class="fas fa-eye"></i>
+                </button>
+                <button class="icon-btn" title="Download">
+                  <i class="fas fa-download"></i>
+                </button>
+              </div>
+            </div>
+            <div class="record-item">
+              <div class="record-icon green"><i class="fas fa-vial"></i></div>
+              <div class="record-info">
+                <div class="record-name">Lipid Profile Test</div>
+                <div class="record-meta">
+                  Lab Result · Dr. Suresh Nair · SRL Diagnostics
+                </div>
+              </div>
+              <div class="record-date">10 Jan 2025</div>
+              <span class="record-tag red">Abnormal</span>
+              <div class="record-actions">
+                <button class="icon-btn" title="View">
+                  <i class="fas fa-eye"></i>
+                </button>
+                <button class="icon-btn" title="Download">
+                  <i class="fas fa-download"></i>
+                </button>
+              </div>
+            </div>
+            <div class="record-item">
+              <div class="record-icon blue">
+                <i class="fas fa-file-medical-alt"></i>
+              </div>
+              <div class="record-info">
+                <div class="record-name">Discharge Summary – Appendectomy</div>
+                <div class="record-meta">
+                  Discharge Summary · Dr. Meena Pillai · City Hospital
+                </div>
+              </div>
+              <div class="record-date">05 Dec 2024</div>
+              <span class="record-tag green">Normal</span>
+              <div class="record-actions">
+                <button class="icon-btn" title="View">
+                  <i class="fas fa-eye"></i>
+                </button>
+                <button class="icon-btn" title="Download">
+                  <i class="fas fa-download"></i>
+                </button>
+              </div>
+            </div>
+            <div class="record-item">
+              <div class="record-icon orange">
+                <i class="fas fa-stethoscope"></i>
+              </div>
+              <div class="record-info">
+                <div class="record-name">ECG Report</div>
+                <div class="record-meta">
+                  Cardiology · Dr. Priya Sharma · Heart Care Centre
+                </div>
+              </div>
+              <div class="record-date">28 Nov 2024</div>
+              <span class="record-tag green">Normal</span>
+              <div class="record-actions">
+                <button class="icon-btn" title="View">
+                  <i class="fas fa-eye"></i>
+                </button>
+                <button class="icon-btn" title="Download">
+                  <i class="fas fa-download"></i>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </main>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="assets/js/dashboard-common.js"></script>
+    <script>
+      const raw = sessionStorage.getItem("user");
+      if (!raw) window.location.href = "login.html";
+      const user = JSON.parse(raw);
+      initSidebar(user, "Medical Records");
+      initTopbar(user);
+    </script>
+  </body>
+</html>

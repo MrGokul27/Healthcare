@@ -255,3 +255,221 @@
     font-size: 13px;
   }
 }
+
+/* ── Department Contacts ── */
+.dept-contact-area {
+  background: #f7f9fc;
+}
+
+.section-badge {
+  display: inline-block;
+  background: #e3f2fd;
+  color: #1565c0;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 1.2px;
+  text-transform: uppercase;
+  padding: 5px 16px;
+  border-radius: 20px;
+  margin-bottom: 12px;
+}
+
+.section-title {
+  font-size: 34px;
+  font-weight: 800;
+  color: #0d1b2a;
+  margin-bottom: 12px;
+  line-height: 1.2;
+}
+
+.section-sub {
+  font-size: 15px;
+  color: #666;
+  margin-bottom: 0;
+}
+
+.dept-card {
+  background: #fff;
+  border-radius: 16px;
+  border: 1px solid #e0eaf5;
+  padding: 28px 22px;
+  text-align: center;
+  height: 100%;
+  transition:
+    transform 0.2s,
+    box-shadow 0.2s;
+  box-shadow: 0 2px 12px rgba(25, 118, 210, 0.05);
+}
+
+.dept-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 32px rgba(25, 118, 210, 0.12);
+}
+
+.dept-icon {
+  width: 60px;
+  height: 60px;
+  border-radius: 16px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 24px;
+  margin: 0 auto 16px;
+}
+
+.dept-card h6 {
+  font-size: 16px;
+  font-weight: 700;
+  color: #0d1b2a;
+  margin-bottom: 6px;
+}
+
+.dept-card p {
+  font-size: 13px;
+  color: #888;
+  margin-bottom: 16px;
+  line-height: 1.5;
+}
+
+.dept-phone {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  font-size: 13px;
+  font-weight: 600;
+  color: #1976d2;
+  text-decoration: none;
+  background: #e3f2fd;
+  padding: 6px 14px;
+  border-radius: 20px;
+  transition: all 0.2s;
+}
+
+.dept-phone:hover {
+  background: #1976d2;
+  color: #fff;
+}
+
+/* ── FAQ ── */
+.faq-area {
+  background: #fff;
+}
+
+.faq-contact-link {
+  color: #1976d2;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.faq-contact-link:hover {
+  text-decoration: underline;
+}
+
+.faq-stats {
+  display: flex;
+  gap: 28px;
+  margin-top: 32px;
+  flex-wrap: wrap;
+}
+
+.faq-stat {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.faq-stat-val {
+  font-size: 26px;
+  font-weight: 800;
+  color: #1976d2;
+  line-height: 1;
+}
+
+.faq-stat-lbl {
+  font-size: 12px;
+  color: #888;
+  font-weight: 500;
+}
+
+.faq-accordion {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.faq-item {
+  border: 1.5px solid #e0eaf5 !important;
+  border-radius: 14px !important;
+  overflow: hidden;
+  box-shadow: 0 2px 8px rgba(25, 118, 210, 0.04);
+}
+
+.faq-btn {
+  font-size: 14px;
+  font-weight: 600;
+  color: #0d1b2a;
+  background: #f8fbff;
+  padding: 18px 20px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  border: none;
+  box-shadow: none !important;
+}
+
+.faq-btn:not(.collapsed) {
+  background: #e3f2fd;
+  color: #1565c0;
+}
+
+.faq-btn::after {
+  filter: none;
+  color: #1976d2;
+  margin-left: auto;
+  flex-shrink: 0;
+}
+
+.faq-q-icon {
+  font-size: 15px;
+  color: #1976d2;
+  flex-shrink: 0;
+  width: 18px;
+  text-align: center;
+}
+
+.faq-btn:not(.collapsed) .faq-q-icon {
+  color: #1565c0;
+}
+
+.faq-body {
+  font-size: 14px;
+  color: #555;
+  line-height: 1.7;
+  padding: 16px 20px 20px 50px;
+  background: #fff;
+}
+
+/* ── Responsive ── */
+@media (max-width: 991px) {
+  .section-title {
+    font-size: 28px;
+  }
+  .faq-stats {
+    gap: 20px;
+  }
+}
+
+@media (max-width: 575px) {
+  .section-title {
+    font-size: 24px;
+  }
+  .faq-body {
+    padding-left: 20px;
+  }
+  .faq-stats {
+    gap: 16px;
+  }
+  .faq-stat-val {
+    font-size: 22px;
+  }
+}

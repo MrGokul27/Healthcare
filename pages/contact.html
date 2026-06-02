@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Contact Us - MediCare</title>
+    <title>Contact Us - Stackly</title>
     <!-- Bootstrap 5 -->
     <link
       rel="stylesheet"
@@ -102,6 +102,21 @@
                         name="name"
                         placeholder="Name"
                         type="text"
+                        required
+                        pattern="[A-Za-z\s]+"
+                        oninvalid="
+                          if (this.validity.valueMissing) {
+                            this.setCustomValidity('Please fill in your Name');
+                          } else {
+                            this.setCustomValidity(
+                              'Name should only contain letters',
+                            );
+                          }
+                        "
+                        oninput="
+                          this.value = this.value.replace(/[^A-Za-z\s]/g, '');
+                          this.setCustomValidity('');
+                        "
                       />
                       <span class="alert-error"></span>
                     </div>
@@ -114,6 +129,13 @@
                         name="email"
                         placeholder="Email*"
                         type="email"
+                        required
+                        oninvalid="
+                          this.setCustomValidity(
+                            'Please fill in your Email Address',
+                          )
+                        "
+                        oninput="this.setCustomValidity('')"
                       />
                       <span class="alert-error"></span>
                     </div>
@@ -126,6 +148,25 @@
                         name="phone"
                         placeholder="Phone"
                         type="text"
+                        required
+                        pattern="\d{10}"
+                        oninvalid="
+                          if (this.validity.valueMissing) {
+                            this.setCustomValidity(
+                              'Please fill in your Phone Number',
+                            );
+                          } else {
+                            this.setCustomValidity(
+                              'Phone Number should contain exactly 10 digits',
+                            );
+                          }
+                        "
+                        oninput="
+                          this.value = this.value
+                            .replace(/[^0-9]/g, '')
+                            .slice(0, 10);
+                          this.setCustomValidity('');
+                        "
                       />
                       <span class="alert-error"></span>
                     </div>
@@ -137,6 +178,11 @@
                         id="comments"
                         name="comments"
                         placeholder="Tell Us About Project *"
+                        required
+                        oninvalid="
+                          this.setCustomValidity('Please fill in your Message')
+                        "
+                        oninput="this.setCustomValidity('')"
                       ></textarea>
                     </div>
                   </div>
@@ -162,6 +208,343 @@
       </div>
     </div>
     <!-- ===== END CONTACT AREA ===== -->
+
+    <!-- ===== DEPARTMENT CONTACTS ===== -->
+    <section class="dept-contact-area section-pad">
+      <div class="container">
+        <div
+          class="text-center mb-5 animate-on-scroll"
+          data-animation="animate__fadeInUp"
+        >
+          <span class="section-badge">Our Departments</span>
+          <h2 class="section-title">Reach the Right Department</h2>
+          <p class="section-sub">
+            Contact our specialised units directly for faster assistance.
+          </p>
+        </div>
+        <div class="row g-4">
+          <div
+            class="col-lg-3 col-md-6 animate-on-scroll"
+            data-animation="animate__fadeInUp"
+          >
+            <div class="dept-card">
+              <div
+                class="dept-icon"
+                style="background: #fce4ec; color: #c62828"
+              >
+                <i class="fas fa-heartbeat"></i>
+              </div>
+              <h6>Emergency</h6>
+              <p>24/7 critical & trauma care</p>
+              <a href="#" class="dept-phone"
+                ><i class="fas fa-phone"></i> +44-20-7328-4499</a
+              >
+            </div>
+          </div>
+          <div
+            class="col-lg-3 col-md-6 animate-on-scroll"
+            data-animation="animate__fadeInUp"
+            style="animation-delay: 0.1s"
+          >
+            <div class="dept-card">
+              <div
+                class="dept-icon"
+                style="background: #e3f2fd; color: #1565c0"
+              >
+                <i class="fas fa-heart-pulse"></i>
+              </div>
+              <h6>Cardiology</h6>
+              <p>Heart & vascular specialists</p>
+              <a href="#" class="dept-phone"
+                ><i class="fas fa-phone"></i> +44-20-7328-4401</a
+              >
+            </div>
+          </div>
+          <div
+            class="col-lg-3 col-md-6 animate-on-scroll"
+            data-animation="animate__fadeInUp"
+            style="animation-delay: 0.2s"
+          >
+            <div class="dept-card">
+              <div
+                class="dept-icon"
+                style="background: #e8f5e9; color: #2e7d32"
+              >
+                <i class="fas fa-brain"></i>
+              </div>
+              <h6>Neurology</h6>
+              <p>Brain & nervous system care</p>
+              <a href="#" class="dept-phone"
+                ><i class="fas fa-phone"></i> +44-20-7328-4402</a
+              >
+            </div>
+          </div>
+          <div
+            class="col-lg-3 col-md-6 animate-on-scroll"
+            data-animation="animate__fadeInUp"
+            style="animation-delay: 0.3s"
+          >
+            <div class="dept-card">
+              <div
+                class="dept-icon"
+                style="background: #fff3e0; color: #e65100"
+              >
+                <i class="fas fa-bone"></i>
+              </div>
+              <h6>Orthopaedics</h6>
+              <p>Bone, joint & spine treatment</p>
+              <a href="#" class="dept-phone"
+                ><i class="fas fa-phone"></i> +44-20-7328-4403</a
+              >
+            </div>
+          </div>
+          <div
+            class="col-lg-3 col-md-6 animate-on-scroll"
+            data-animation="animate__fadeInUp"
+            style="animation-delay: 0.1s"
+          >
+            <div class="dept-card">
+              <div
+                class="dept-icon"
+                style="background: #ede7f6; color: #6a1b9a"
+              >
+                <i class="fas fa-lungs"></i>
+              </div>
+              <h6>Pulmonology</h6>
+              <p>Respiratory & lung health</p>
+              <a href="#" class="dept-phone"
+                ><i class="fas fa-phone"></i> +44-20-7328-4404</a
+              >
+            </div>
+          </div>
+          <div
+            class="col-lg-3 col-md-6 animate-on-scroll"
+            data-animation="animate__fadeInUp"
+            style="animation-delay: 0.2s"
+          >
+            <div class="dept-card">
+              <div
+                class="dept-icon"
+                style="background: #e0f2f1; color: #00695c"
+              >
+                <i class="fas fa-eye"></i>
+              </div>
+              <h6>Ophthalmology</h6>
+              <p>Eye care & vision treatment</p>
+              <a href="#" class="dept-phone"
+                ><i class="fas fa-phone"></i> +44-20-7328-4405</a
+              >
+            </div>
+          </div>
+          <div
+            class="col-lg-3 col-md-6 animate-on-scroll"
+            data-animation="animate__fadeInUp"
+            style="animation-delay: 0.3s"
+          >
+            <div class="dept-card">
+              <div
+                class="dept-icon"
+                style="background: #fce4ec; color: #880e4f"
+              >
+                <i class="fas fa-female"></i>
+              </div>
+              <h6>Gynaecology</h6>
+              <p>Women's health & maternity</p>
+              <a href="#" class="dept-phone"
+                ><i class="fas fa-phone"></i> +44-20-7328-4406</a
+              >
+            </div>
+          </div>
+          <div
+            class="col-lg-3 col-md-6 animate-on-scroll"
+            data-animation="animate__fadeInUp"
+            style="animation-delay: 0.4s"
+          >
+            <div class="dept-card">
+              <div
+                class="dept-icon"
+                style="background: #e8f5e9; color: #1b5e20"
+              >
+                <i class="fas fa-child"></i>
+              </div>
+              <h6>Paediatrics</h6>
+              <p>Child health & development</p>
+              <a href="#" class="dept-phone"
+                ><i class="fas fa-phone"></i> +44-20-7328-4407</a
+              >
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- ===== END DEPARTMENT CONTACTS ===== -->
+
+    <!-- ===== FAQ ===== -->
+    <section class="faq-area section-pad">
+      <div class="container">
+        <div class="row align-items-center g-5">
+          <div
+            class="col-lg-5 animate-on-scroll"
+            data-animation="animate__fadeInLeft"
+          >
+            <span class="section-badge">FAQ</span>
+            <h2 class="section-title">Frequently Asked Questions</h2>
+            <p class="section-sub">
+              Can't find your answer here?
+              <a href="#" class="faq-contact-link">Send us a message</a>
+              and we'll get back to you within 24 hours.
+            </p>
+            <div class="faq-stats">
+              <div class="faq-stat">
+                <span class="faq-stat-val">24/7</span
+                ><span class="faq-stat-lbl">Emergency Support</span>
+              </div>
+              <div class="faq-stat">
+                <span class="faq-stat-val">&lt;2h</span
+                ><span class="faq-stat-lbl">Avg. Response Time</span>
+              </div>
+              <div class="faq-stat">
+                <span class="faq-stat-val">98%</span
+                ><span class="faq-stat-lbl">Patient Satisfaction</span>
+              </div>
+            </div>
+          </div>
+          <div
+            class="col-lg-7 animate-on-scroll"
+            data-animation="animate__fadeInRight"
+          >
+            <div class="accordion faq-accordion" id="faqAccordion">
+              <div class="accordion-item faq-item">
+                <h2 class="accordion-header">
+                  <button
+                    class="accordion-button faq-btn"
+                    type="button"
+                    data-bs-toggle="collapse"
+                    data-bs-target="#faq1"
+                  >
+                    <i class="fas fa-calendar-check faq-q-icon"></i> How do I
+                    book an appointment?
+                  </button>
+                </h2>
+                <div
+                  id="faq1"
+                  class="accordion-collapse collapse show"
+                  data-bs-parent="#faqAccordion"
+                >
+                  <div class="accordion-body faq-body">
+                    You can book an appointment online through our patient
+                    portal, call our helpline at +44-20-7328-4499, or visit the
+                    reception desk in person. Online bookings are available
+                    24/7.
+                  </div>
+                </div>
+              </div>
+              <div class="accordion-item faq-item">
+                <h2 class="accordion-header">
+                  <button
+                    class="accordion-button faq-btn collapsed"
+                    type="button"
+                    data-bs-toggle="collapse"
+                    data-bs-target="#faq2"
+                  >
+                    <i class="fas fa-file-medical faq-q-icon"></i> How can I
+                    access my medical records?
+                  </button>
+                </h2>
+                <div
+                  id="faq2"
+                  class="accordion-collapse collapse"
+                  data-bs-parent="#faqAccordion"
+                >
+                  <div class="accordion-body faq-body">
+                    Registered patients can access their full medical history,
+                    lab results, and prescriptions through the Stackly patient
+                    dashboard after logging in. You can also request physical
+                    copies at the records desk.
+                  </div>
+                </div>
+              </div>
+              <div class="accordion-item faq-item">
+                <h2 class="accordion-header">
+                  <button
+                    class="accordion-button faq-btn collapsed"
+                    type="button"
+                    data-bs-toggle="collapse"
+                    data-bs-target="#faq3"
+                  >
+                    <i class="fas fa-video faq-q-icon"></i> Do you offer
+                    teleconsultation services?
+                  </button>
+                </h2>
+                <div
+                  id="faq3"
+                  class="accordion-collapse collapse"
+                  data-bs-parent="#faqAccordion"
+                >
+                  <div class="accordion-body faq-body">
+                    Yes, we offer video consultations with our doctors for
+                    follow-ups, general health queries, and non-emergency
+                    concerns. Book a teleconsult slot through the patient portal
+                    or contact your doctor's department directly.
+                  </div>
+                </div>
+              </div>
+              <div class="accordion-item faq-item">
+                <h2 class="accordion-header">
+                  <button
+                    class="accordion-button faq-btn collapsed"
+                    type="button"
+                    data-bs-toggle="collapse"
+                    data-bs-target="#faq4"
+                  >
+                    <i class="fas fa-ambulance faq-q-icon"></i> What should I do
+                    in a medical emergency?
+                  </button>
+                </h2>
+                <div
+                  id="faq4"
+                  class="accordion-collapse collapse"
+                  data-bs-parent="#faqAccordion"
+                >
+                  <div class="accordion-body faq-body">
+                    Call our emergency line immediately at +44-20-7328-4499. Our
+                    emergency department is open 24/7. For life-threatening
+                    situations, dial 999. Do not drive yourself — call an
+                    ambulance or ask someone nearby for help.
+                  </div>
+                </div>
+              </div>
+              <div class="accordion-item faq-item">
+                <h2 class="accordion-header">
+                  <button
+                    class="accordion-button faq-btn collapsed"
+                    type="button"
+                    data-bs-toggle="collapse"
+                    data-bs-target="#faq5"
+                  >
+                    <i class="fas fa-pills faq-q-icon"></i> How do I request a
+                    prescription refill?
+                  </button>
+                </h2>
+                <div
+                  id="faq5"
+                  class="accordion-collapse collapse"
+                  data-bs-parent="#faqAccordion"
+                >
+                  <div class="accordion-body faq-body">
+                    Log into your patient dashboard and navigate to
+                    Prescriptions to submit a refill request. Your doctor will
+                    review and approve it within 1–2 working days. You'll
+                    receive a notification once it's ready for collection.
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- ===== END FAQ ===== -->
 
     <!-- ===== GOOGLE MAPS ===== -->
     <div class="maps-area">
@@ -191,7 +574,7 @@
             </p>
             <div class="mt-4 d-flex flex-wrap justify-content-center gap-3">
               <a
-                href="tel:+14165551234"
+                href="#"
                 class="btn btn-light btn-lg rounded-pill px-5 fw-semibold"
               >
                 <i class="fas fa-phone me-2"></i>Call Now
@@ -211,5 +594,14 @@
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
     <script src="../assets/js/script.js"></script>
+    <script>
+      // Form submission handling - refresh page
+      document
+        .querySelector(".contact-form")
+        .addEventListener("submit", function (e) {
+          e.preventDefault();
+          window.location.href = "../404.html";
+        });
+    </script>
   </body>
 </html>

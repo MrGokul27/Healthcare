@@ -1,0 +1,403 @@
+/* =============================================
+   Authentication Pages (Login / Register)
+   ============================================= */
+
+.auth-body {
+  min-height: 100vh;
+  display: flex;
+  background: #f0f6ff;
+  font-family: "Inter", sans-serif;
+}
+
+/* ── Split Layout ─────────────────────────────── */
+.auth-wrap {
+  display: flex;
+  min-height: 100vh;
+  width: 100%;
+}
+
+/* ── Brand Panel (left) ───────────────────────── */
+.auth-brand-panel {
+  width: 42%;
+  background: linear-gradient(160deg, #0a1628 0%, #0d47a1 55%, #1976d2 100%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  /* padding: 60px 48px; */
+  position: relative;
+  overflow: hidden;
+  flex-shrink: 0;
+}
+
+/* decorative circles */
+.auth-brand-panel::before,
+.auth-brand-panel::after {
+  content: "";
+  position: absolute;
+  border-radius: 50%;
+  pointer-events: none;
+}
+.auth-brand-panel::before {
+  width: 380px;
+  height: 380px;
+  background: rgba(255, 255, 255, 0.04);
+  top: -100px;
+  right: -100px;
+}
+.auth-brand-panel::after {
+  width: 260px;
+  height: 260px;
+  background: rgba(255, 255, 255, 0.05);
+  bottom: -80px;
+  left: -60px;
+}
+
+.auth-brand-inner {
+  position: relative;
+  z-index: 1;
+  text-align: center;
+  color: #fff;
+}
+
+/* Medical cross logo */
+.auth-logo-icon {
+  width: 80px;
+  height: 80px;
+  background: rgba(255, 255, 255, 0.15);
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  border-radius: 22px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 36px;
+  margin: 0 auto 24px;
+  backdrop-filter: blur(8px);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.25);
+}
+
+.auth-brand-inner h2 {
+  font-size: 30px;
+  font-weight: 800;
+  margin-bottom: 8px;
+  letter-spacing: -0.5px;
+}
+
+.auth-brand-inner h2 span {
+  color: #90caf9;
+}
+
+.auth-brand-tagline {
+  font-size: 14px;
+  color: rgba(255, 255, 255, 0.7);
+  margin-bottom: 40px;
+}
+
+/* Feature list */
+.auth-features {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 40px;
+  text-align: left;
+  width: 100%;
+}
+
+.auth-features li {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 12px 16px;
+  background: rgba(255, 255, 255, 0.07);
+  border-radius: 12px;
+  margin-bottom: 10px;
+  font-size: 14px;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.9);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.auth-features li i {
+  width: 32px;
+  height: 32px;
+  background: rgba(255, 255, 255, 0.15);
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+  flex-shrink: 0;
+  color: #90caf9;
+}
+
+/* ECG pulse line */
+.auth-ecg {
+  width: 100%;
+  height: 36px;
+  opacity: 0.35;
+  margin-top: 8px;
+}
+
+/* ── Form Panel (right) ───────────────────────── */
+.auth-form-panel {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  /* padding: 48px 40px; */
+  background: #f0f6ff;
+  position: relative;
+  overflow: hidden;
+}
+
+/* subtle blob */
+.auth-form-panel::before {
+  content: "";
+  position: absolute;
+  width: 350px;
+  height: 350px;
+  background: radial-gradient(
+    circle,
+    rgba(25, 118, 210, 0.08),
+    transparent 70%
+  );
+  bottom: -80px;
+  right: -80px;
+  border-radius: 50%;
+  pointer-events: none;
+}
+
+.auth-card {
+  background: #fff;
+  border-radius: 24px;
+  padding: 40px 36px;
+  box-shadow: 0 12px 48px rgba(25, 118, 210, 0.1);
+  border: 1px solid rgba(25, 118, 210, 0.07);
+  width: 100%;
+  max-width: 440px;
+  position: relative;
+  z-index: 1;
+}
+
+/* ── Card Header ──────────────────────────────── */
+.auth-header {
+  margin-bottom: 28px;
+}
+
+.auth-step-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: #e3f2fd;
+  color: #1976d2;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  padding: 5px 12px;
+  border-radius: 20px;
+  margin-bottom: 14px;
+}
+
+.auth-title {
+  font-size: 26px;
+  font-weight: 800;
+  color: #0d1b2a;
+  margin-bottom: 6px;
+  line-height: 1.2;
+}
+
+.auth-subtitle {
+  font-size: 14px;
+  color: #777;
+  margin: 0;
+}
+
+/* ── Form Inputs ──────────────────────────────── */
+.auth-form .form-label {
+  font-size: 13px;
+  font-weight: 600;
+  color: #0d1b2a;
+  margin-bottom: 6px;
+}
+
+.input-icon-wrap {
+  position: relative;
+}
+
+.input-icon-wrap .field-icon {
+  position: absolute;
+  left: 14px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #1976d2;
+  font-size: 14px;
+  pointer-events: none;
+  z-index: 2;
+}
+
+.input-icon-wrap .form-control,
+.input-icon-wrap .form-select {
+  padding-left: 40px;
+}
+
+.auth-form .form-control,
+.auth-form .form-select {
+  border-radius: 10px;
+  border: 1.5px solid #e0eaf5;
+  padding: 11px 14px 11px 33px;
+  font-size: 14px;
+  transition: all 0.25s;
+  background: #f8fbff;
+}
+
+.auth-form .form-control:focus,
+.auth-form .form-select:focus {
+  border-color: #1976d2;
+  background: #fff;
+  box-shadow: 0 0 0 3px rgba(25, 118, 210, 0.1);
+}
+
+/* password toggle */
+.pass-toggle {
+  position: absolute;
+  right: 14px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  color: #aaa;
+  cursor: pointer;
+  font-size: 14px;
+  padding: 0;
+  z-index: 2;
+  transition: color 0.2s;
+}
+
+.pass-toggle:hover {
+  color: #1976d2;
+}
+
+/* ── Divider ──────────────────────────────────── */
+.auth-divider {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin: 20px 0;
+  color: #bbb;
+  font-size: 12px;
+  font-weight: 500;
+}
+
+.auth-divider::before,
+.auth-divider::after {
+  content: "";
+  flex: 1;
+  height: 1px;
+  background: #e8eef5;
+}
+
+/* ── Submit Button ────────────────────────────── */
+.auth-btn {
+  background: linear-gradient(135deg, #1976d2 0%, #0d47a1 100%);
+  border: none;
+  padding: 13px;
+  font-weight: 700;
+  font-size: 15px;
+  border-radius: 12px;
+  width: 100%;
+  color: #fff;
+  transition:
+    transform 0.2s,
+    box-shadow 0.2s;
+  letter-spacing: 0.3px;
+}
+
+.auth-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(25, 118, 210, 0.35);
+  color: #fff;
+}
+
+.auth-btn:active {
+  transform: translateY(0);
+}
+
+/* ── Footer ───────────────────────────────────── */
+.auth-footer {
+  text-align: center;
+  margin-top: 22px;
+  font-size: 14px;
+  color: #666;
+  border-top: 1px solid #f0f4f8;
+  padding-top: 18px;
+}
+
+.auth-footer a {
+  color: #1976d2;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.auth-footer a:hover {
+  text-decoration: underline;
+}
+
+/* ── Role Selector Pills ──────────────────────── */
+.role-pills {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.role-pill {
+  flex: 1;
+  min-width: 70px;
+  border: 1.5px solid #e0eaf5;
+  background: #f8fbff;
+  border-radius: 10px;
+  padding: 10px 6px;
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.2s;
+  font-size: 12px;
+  font-weight: 600;
+  color: #555;
+}
+
+.role-pill i {
+  display: block;
+  font-size: 18px;
+  margin-bottom: 4px;
+  color: #1976d2;
+}
+
+.role-pill.active,
+.role-pill:hover {
+  border-color: #1976d2;
+  background: #e3f2fd;
+  color: #0d47a1;
+}
+
+.role-pill.active {
+  box-shadow: 0 0 0 3px rgba(25, 118, 210, 0.12);
+}
+
+/* ── Responsive ───────────────────────────────── */
+@media (max-width: 991px) {
+  .auth-brand-panel {
+    display: none;
+  }
+  .auth-form-panel {
+    padding: 40px 20px;
+  }
+}
+
+@media (max-width: 480px) {
+  .auth-card {
+    padding: 28px 20px;
+    border-radius: 18px;
+  }
+  .auth-title {
+    font-size: 22px;
+  }
+}

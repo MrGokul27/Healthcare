@@ -1,0 +1,274 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Reports | Stackly</title>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="assets/css/dashboard.css" />
+    <link rel="stylesheet" href="assets/css/pages.css" />
+  </head>
+  <body>
+    <aside class="db-sidebar" id="sidebar"></aside>
+    <div class="db-main">
+      <header class="db-topbar">
+        <div class="d-flex align-items-center gap-3">
+          <button
+            class="topbar-icon-btn d-lg-none"
+            onclick="
+              document.getElementById('sidebar').classList.toggle('open')
+            "
+          >
+            <i class="fas fa-bars"></i>
+          </button>
+          <div class="db-topbar-left">
+            <h5>Reports</h5>
+            <p id="topbarSub">—</p>
+          </div>
+        </div>
+        <div class="db-topbar-right">
+          <div class="topbar-icon-btn">
+            <i class="fas fa-magnifying-glass"></i>
+          </div>
+          <div class="topbar-icon-btn">
+            <i class="fas fa-bell"></i><span class="dot"></span>
+          </div>
+          <div class="topbar-user">
+            <div class="avatar" id="topbarAvatar"></div>
+            <span class="uname" id="topbarName">—</span>
+          </div>
+        </div>
+      </header>
+
+      <main class="db-content">
+        <div class="page-header-row">
+          <div>
+            <h4 class="page-title">
+              <i class="fas fa-file-invoice"></i> Reports
+            </h4>
+            <p class="page-sub">
+              View and generate clinical and operational reports
+            </p>
+          </div>
+          <button class="btn-primary-action">
+            <i class="fas fa-download"></i> Export Report
+          </button>
+        </div>
+
+        <!-- Quick Stats -->
+        <div class="mini-stats">
+          <div class="mini-stat blue">
+            <i class="fas fa-file-waveform"></i>
+            <div>
+              <span class="ms-val">6</span
+              ><span class="ms-lbl">Pending Reports</span>
+            </div>
+          </div>
+          <div class="mini-stat green">
+            <i class="fas fa-circle-check"></i>
+            <div>
+              <span class="ms-val">42</span
+              ><span class="ms-lbl">Completed This Month</span>
+            </div>
+          </div>
+          <div class="mini-stat orange">
+            <i class="fas fa-triangle-exclamation"></i>
+            <div>
+              <span class="ms-val">3</span><span class="ms-lbl">Flagged</span>
+            </div>
+          </div>
+          <div class="mini-stat purple">
+            <i class="fas fa-calendar-check"></i>
+            <div>
+              <span class="ms-val">314</span
+              ><span class="ms-lbl">Total (This Year)</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Reports Table -->
+        <div class="db-panel">
+          <div class="db-panel-header">
+            <h6>
+              <i class="fas fa-table me-2 text-primary"></i>Recent Reports
+            </h6>
+            <div class="panel-filters">
+              <select class="filter-select">
+                <option>All Types</option>
+                <option>Lab Report</option>
+                <option>Clinical</option>
+                <option>Billing</option>
+                <option>Monthly Summary</option>
+              </select>
+            </div>
+          </div>
+          <div style="overflow-x: auto">
+            <table class="data-table">
+              <thead>
+                <tr>
+                  <th>Report</th>
+                  <th>Patient / Ref</th>
+                  <th>Type</th>
+                  <th>Generated</th>
+                  <th>Status</th>
+                  <th>Actions</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>
+                    <div class="report-name">
+                      <i class="fas fa-vial text-primary"></i> CBC Report – Ravi
+                      Kumar
+                    </div>
+                  </td>
+                  <td>PT-001</td>
+                  <td><span class="type-chip lab">Lab</span></td>
+                  <td>28 Jan 2025</td>
+                  <td><span class="status-chip active">Normal</span></td>
+                  <td>
+                    <button class="icon-btn"><i class="fas fa-eye"></i></button
+                    ><button class="icon-btn">
+                      <i class="fas fa-download"></i>
+                    </button>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <div class="report-name">
+                      <i class="fas fa-file-waveform text-primary"></i> Lipid
+                      Panel – Mohan Das
+                    </div>
+                  </td>
+                  <td>PT-003</td>
+                  <td><span class="type-chip lab">Lab</span></td>
+                  <td>27 Jan 2025</td>
+                  <td><span class="status-chip waiting">Flagged</span></td>
+                  <td>
+                    <button class="icon-btn"><i class="fas fa-eye"></i></button
+                    ><button class="icon-btn">
+                      <i class="fas fa-download"></i>
+                    </button>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <div class="report-name">
+                      <i class="fas fa-stethoscope text-primary"></i> Post-Op
+                      Review – Arun Joshi
+                    </div>
+                  </td>
+                  <td>PT-005</td>
+                  <td><span class="type-chip clinical">Clinical</span></td>
+                  <td>26 Jan 2025</td>
+                  <td><span class="status-chip active">Normal</span></td>
+                  <td>
+                    <button class="icon-btn"><i class="fas fa-eye"></i></button
+                    ><button class="icon-btn">
+                      <i class="fas fa-download"></i>
+                    </button>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <div class="report-name">
+                      <i class="fas fa-file-invoice text-primary"></i> Monthly
+                      Summary – January 2025
+                    </div>
+                  </td>
+                  <td>Admin Ref</td>
+                  <td><span class="type-chip summary">Summary</span></td>
+                  <td>25 Jan 2025</td>
+                  <td><span class="status-chip active">Published</span></td>
+                  <td>
+                    <button class="icon-btn"><i class="fas fa-eye"></i></button
+                    ><button class="icon-btn">
+                      <i class="fas fa-download"></i>
+                    </button>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <div class="report-name">
+                      <i class="fas fa-x-ray text-primary"></i> Chest X-Ray –
+                      Lakshmi Devi
+                    </div>
+                  </td>
+                  <td>PT-002</td>
+                  <td><span class="type-chip lab">Imaging</span></td>
+                  <td>24 Jan 2025</td>
+                  <td>
+                    <span class="status-chip waiting">Pending Review</span>
+                  </td>
+                  <td>
+                    <button class="icon-btn"><i class="fas fa-eye"></i></button
+                    ><button class="icon-btn">
+                      <i class="fas fa-download"></i>
+                    </button>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <div class="report-name">
+                      <i class="fas fa-heart-pulse text-primary"></i> ECG
+                      Analysis – Nirmala Reddy
+                    </div>
+                  </td>
+                  <td>PT-008</td>
+                  <td><span class="type-chip clinical">Clinical</span></td>
+                  <td>23 Jan 2025</td>
+                  <td><span class="status-chip active">Normal</span></td>
+                  <td>
+                    <button class="icon-btn"><i class="fas fa-eye"></i></button
+                    ><button class="icon-btn">
+                      <i class="fas fa-download"></i>
+                    </button>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <div class="report-name">
+                      <i class="fas fa-file-invoice-dollar text-primary"></i>
+                      Billing Report – Q4 2024
+                    </div>
+                  </td>
+                  <td>Finance Dept</td>
+                  <td><span class="type-chip billing">Billing</span></td>
+                  <td>01 Jan 2025</td>
+                  <td><span class="status-chip discharged">Archived</span></td>
+                  <td>
+                    <button class="icon-btn"><i class="fas fa-eye"></i></button
+                    ><button class="icon-btn">
+                      <i class="fas fa-download"></i>
+                    </button>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </main>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="assets/js/dashboard-common.js"></script>
+    <script>
+      const raw = sessionStorage.getItem("user");
+      if (!raw) window.location.href = "login.html";
+      const user = JSON.parse(raw);
+      initSidebar(user, "Reports");
+      initTopbar(user);
+    </script>
+  </body>
+</html>

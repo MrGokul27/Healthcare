@@ -1,0 +1,358 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Patients | Stackly</title>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="assets/css/dashboard.css" />
+    <link rel="stylesheet" href="assets/css/pages.css" />
+  </head>
+  <body>
+    <aside class="db-sidebar" id="sidebar"></aside>
+    <div class="db-main">
+      <header class="db-topbar">
+        <div class="d-flex align-items-center gap-3">
+          <button
+            class="topbar-icon-btn d-lg-none"
+            onclick="
+              document.getElementById('sidebar').classList.toggle('open')
+            "
+          >
+            <i class="fas fa-bars"></i>
+          </button>
+          <div class="db-topbar-left">
+            <h5>Patients</h5>
+            <p id="topbarSub">—</p>
+          </div>
+        </div>
+        <div class="db-topbar-right">
+          <div class="topbar-icon-btn">
+            <i class="fas fa-magnifying-glass"></i>
+          </div>
+          <div class="topbar-icon-btn">
+            <i class="fas fa-bell"></i><span class="dot"></span>
+          </div>
+          <div class="topbar-user">
+            <div class="avatar" id="topbarAvatar"></div>
+            <span class="uname" id="topbarName">—</span>
+          </div>
+        </div>
+      </header>
+
+      <main class="db-content">
+        <div class="page-header-row">
+          <div>
+            <h4 class="page-title"><i class="fas fa-users"></i> Patients</h4>
+            <p class="page-sub">Manage and view patient records</p>
+          </div>
+          <button class="btn-primary-action">
+            <i class="fas fa-user-plus"></i> Register Patient
+          </button>
+        </div>
+
+        <!-- Summary -->
+        <div class="mini-stats">
+          <div class="mini-stat blue">
+            <i class="fas fa-bed-pulse"></i>
+            <div>
+              <span class="ms-val">24</span
+              ><span class="ms-lbl">Active Patients</span>
+            </div>
+          </div>
+          <div class="mini-stat green">
+            <i class="fas fa-user-check"></i>
+            <div>
+              <span class="ms-val">8</span
+              ><span class="ms-lbl">Checked In Today</span>
+            </div>
+          </div>
+          <div class="mini-stat orange">
+            <i class="fas fa-clock"></i>
+            <div>
+              <span class="ms-val">3</span><span class="ms-lbl">Waiting</span>
+            </div>
+          </div>
+          <div class="mini-stat purple">
+            <i class="fas fa-door-open"></i>
+            <div>
+              <span class="ms-val">5</span
+              ><span class="ms-lbl">Discharged Today</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Search + Filter -->
+        <div class="db-panel">
+          <div class="db-panel-header">
+            <h6>
+              <i class="fas fa-list me-2 text-primary"></i>Patient Directory
+            </h6>
+            <div class="panel-filters">
+              <input
+                type="text"
+                class="search-input"
+                placeholder="Search patients..."
+                oninput="searchPatients(this.value)"
+              />
+              <select class="filter-select" onchange="filterByDept(this.value)">
+                <option value="">All Departments</option>
+                <option>Cardiology</option>
+                <option>Neurology</option>
+                <option>General Medicine</option>
+                <option>Orthopedics</option>
+                <option>Dermatology</option>
+              </select>
+            </div>
+          </div>
+          <div style="overflow-x: auto">
+            <table class="data-table" id="patientTable">
+              <thead>
+                <tr>
+                  <th>Patient</th>
+                  <th>ID</th>
+                  <th>Age/Gender</th>
+                  <th>Department</th>
+                  <th>Doctor</th>
+                  <th>Last Visit</th>
+                  <th>Status</th>
+                  <th>Actions</th>
+                </tr>
+              </thead>
+              <tbody id="patientBody">
+                <tr>
+                  <td>
+                    <div class="patient-cell">
+                      <div class="pt-avatar">RK</div>
+                      <div>
+                        <div class="pt-name">Ravi Kumar</div>
+                        <div class="pt-id-sub">ravi.kumar@email.com</div>
+                      </div>
+                    </div>
+                  </td>
+                  <td class="pt-id">PT-001</td>
+                  <td>45, Male</td>
+                  <td>Cardiology</td>
+                  <td>Dr. Priya Sharma</td>
+                  <td>28 Jan 2025</td>
+                  <td><span class="status-chip active">Active</span></td>
+                  <td>
+                    <button class="icon-btn" title="View">
+                      <i class="fas fa-eye"></i></button
+                    ><button class="icon-btn" title="Edit">
+                      <i class="fas fa-pen"></i>
+                    </button>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <div class="patient-cell">
+                      <div class="pt-avatar">LD</div>
+                      <div>
+                        <div class="pt-name">Lakshmi Devi</div>
+                        <div class="pt-id-sub">lakshmi.devi@email.com</div>
+                      </div>
+                    </div>
+                  </td>
+                  <td class="pt-id">PT-002</td>
+                  <td>32, Female</td>
+                  <td>General Medicine</td>
+                  <td>Dr. Ananya Iyer</td>
+                  <td>27 Jan 2025</td>
+                  <td><span class="status-chip active">Active</span></td>
+                  <td>
+                    <button class="icon-btn" title="View">
+                      <i class="fas fa-eye"></i></button
+                    ><button class="icon-btn" title="Edit">
+                      <i class="fas fa-pen"></i>
+                    </button>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <div class="patient-cell">
+                      <div class="pt-avatar">MD</div>
+                      <div>
+                        <div class="pt-name">Mohan Das</div>
+                        <div class="pt-id-sub">mohan.das@email.com</div>
+                      </div>
+                    </div>
+                  </td>
+                  <td class="pt-id">PT-003</td>
+                  <td>58, Male</td>
+                  <td>Cardiology</td>
+                  <td>Dr. Priya Sharma</td>
+                  <td>26 Jan 2025</td>
+                  <td><span class="status-chip waiting">Waiting</span></td>
+                  <td>
+                    <button class="icon-btn" title="View">
+                      <i class="fas fa-eye"></i></button
+                    ><button class="icon-btn" title="Edit">
+                      <i class="fas fa-pen"></i>
+                    </button>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <div class="patient-cell">
+                      <div class="pt-avatar">SR</div>
+                      <div>
+                        <div class="pt-name">Sunita Rao</div>
+                        <div class="pt-id-sub">sunita.rao@email.com</div>
+                      </div>
+                    </div>
+                  </td>
+                  <td class="pt-id">PT-004</td>
+                  <td>29, Female</td>
+                  <td>Dermatology</td>
+                  <td>Dr. Meena Pillai</td>
+                  <td>25 Jan 2025</td>
+                  <td>
+                    <span class="status-chip discharged">Discharged</span>
+                  </td>
+                  <td>
+                    <button class="icon-btn" title="View">
+                      <i class="fas fa-eye"></i></button
+                    ><button class="icon-btn" title="Edit">
+                      <i class="fas fa-pen"></i>
+                    </button>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <div class="patient-cell">
+                      <div class="pt-avatar">AJ</div>
+                      <div>
+                        <div class="pt-name">Arun Joshi</div>
+                        <div class="pt-id-sub">arun.joshi@email.com</div>
+                      </div>
+                    </div>
+                  </td>
+                  <td class="pt-id">PT-005</td>
+                  <td>40, Male</td>
+                  <td>Orthopedics</td>
+                  <td>Dr. Suresh Nair</td>
+                  <td>24 Jan 2025</td>
+                  <td><span class="status-chip active">Active</span></td>
+                  <td>
+                    <button class="icon-btn" title="View">
+                      <i class="fas fa-eye"></i></button
+                    ><button class="icon-btn" title="Edit">
+                      <i class="fas fa-pen"></i>
+                    </button>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <div class="patient-cell">
+                      <div class="pt-avatar">PM</div>
+                      <div>
+                        <div class="pt-name">Preethi Menon</div>
+                        <div class="pt-id-sub">preethi.menon@email.com</div>
+                      </div>
+                    </div>
+                  </td>
+                  <td class="pt-id">PT-006</td>
+                  <td>36, Female</td>
+                  <td>Neurology</td>
+                  <td>Dr. Raj Mehta</td>
+                  <td>23 Jan 2025</td>
+                  <td><span class="status-chip waiting">Waiting</span></td>
+                  <td>
+                    <button class="icon-btn" title="View">
+                      <i class="fas fa-eye"></i></button
+                    ><button class="icon-btn" title="Edit">
+                      <i class="fas fa-pen"></i>
+                    </button>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <div class="patient-cell">
+                      <div class="pt-avatar">VK</div>
+                      <div>
+                        <div class="pt-name">Vijay Kumar</div>
+                        <div class="pt-id-sub">vijay.kumar@email.com</div>
+                      </div>
+                    </div>
+                  </td>
+                  <td class="pt-id">PT-007</td>
+                  <td>52, Male</td>
+                  <td>General Medicine</td>
+                  <td>Dr. Ananya Iyer</td>
+                  <td>22 Jan 2025</td>
+                  <td><span class="status-chip active">Active</span></td>
+                  <td>
+                    <button class="icon-btn" title="View">
+                      <i class="fas fa-eye"></i></button
+                    ><button class="icon-btn" title="Edit">
+                      <i class="fas fa-pen"></i>
+                    </button>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <div class="patient-cell">
+                      <div class="pt-avatar">NR</div>
+                      <div>
+                        <div class="pt-name">Nirmala Reddy</div>
+                        <div class="pt-id-sub">nirmala.reddy@email.com</div>
+                      </div>
+                    </div>
+                  </td>
+                  <td class="pt-id">PT-008</td>
+                  <td>48, Female</td>
+                  <td>Cardiology</td>
+                  <td>Dr. Priya Sharma</td>
+                  <td>21 Jan 2025</td>
+                  <td>
+                    <span class="status-chip discharged">Discharged</span>
+                  </td>
+                  <td>
+                    <button class="icon-btn" title="View">
+                      <i class="fas fa-eye"></i></button
+                    ><button class="icon-btn" title="Edit">
+                      <i class="fas fa-pen"></i>
+                    </button>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </main>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="assets/js/dashboard-common.js"></script>
+    <script>
+      const raw = sessionStorage.getItem("user");
+      if (!raw) window.location.href = "login.html";
+      const user = JSON.parse(raw);
+      initSidebar(user, "Patients");
+      initTopbar(user);
+
+      function searchPatients(val) {
+        const rows = document.querySelectorAll("#patientBody tr");
+        rows.forEach((r) => {
+          r.style.display = r.textContent
+            .toLowerCase()
+            .includes(val.toLowerCase())
+            ? ""
+            : "none";
+        });
+      }
+    </script>
+  </body>
+</html>

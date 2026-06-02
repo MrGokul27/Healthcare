@@ -1,0 +1,822 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dashboard | Stackly</title>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="assets/css/dashboard.css" />
+  </head>
+  <body>
+    <!-- ── Sidebar ── -->
+    <aside class="db-sidebar" id="sidebar">
+      <div class="db-sidebar-logo">
+        <div class="logo-icon"><i class="fas fa-plus-circle"></i></div>
+        <span>Stack<em>ly</em></span>
+      </div>
+
+      <nav class="db-nav" id="sidebarNav">
+        <!-- populated by JS -->
+      </nav>
+
+      <div class="db-sidebar-user">
+        <div class="avatar" id="sidebarAvatar"></div>
+        <div class="info">
+          <div class="name" id="sidebarName">—</div>
+          <div class="role-tag" id="sidebarRole">—</div>
+        </div>
+        <button class="logout-btn" title="Logout" onclick="logout()">
+          <i class="fas fa-right-from-bracket"></i>
+        </button>
+      </div>
+    </aside>
+
+    <!-- ── Main ── -->
+    <div class="db-main">
+      <!-- Topbar -->
+      <header class="db-topbar">
+        <div class="d-flex align-items-center gap-3">
+          <button
+            class="topbar-icon-btn d-lg-none"
+            onclick="
+              document.getElementById('sidebar').classList.toggle('open')
+            "
+          >
+            <i class="fas fa-bars"></i>
+          </button>
+          <div class="db-topbar-left">
+            <h5 id="topbarTitle">Dashboard</h5>
+            <p id="topbarSub">Welcome back!</p>
+          </div>
+        </div>
+        <div class="db-topbar-right">
+          <div class="topbar-icon-btn" title="Search">
+            <i class="fas fa-magnifying-glass"></i>
+          </div>
+          <div class="topbar-icon-btn" title="Notifications">
+            <i class="fas fa-bell"></i>
+            <span class="dot"></span>
+          </div>
+          <div class="topbar-icon-btn" title="Messages">
+            <i class="fas fa-envelope"></i>
+          </div>
+          <div class="topbar-user">
+            <div class="avatar" id="topbarAvatar"></div>
+            <span class="uname" id="topbarName">—</span>
+          </div>
+        </div>
+      </header>
+
+      <!-- Content -->
+      <main class="db-content">
+        <!-- Welcome Banner -->
+        <div class="welcome-banner">
+          <div class="welcome-text">
+            <h2 id="welcomeHeading">Hello! 👋</h2>
+            <p id="welcomeSubtext">Here's what's happening today.</p>
+            <div class="welcome-meta">
+              <span class="meta-chip"
+                ><i class="fas fa-envelope"></i>
+                <span id="wEmail">—</span></span
+              >
+              <span class="meta-chip"
+                ><i id="wRoleIcon" class="fas fa-user"></i>
+                <span id="wRole">—</span></span
+              >
+              <span class="meta-chip"
+                ><i class="fas fa-calendar-day"></i>
+                <span id="wDate">—</span></span
+              >
+            </div>
+          </div>
+          <div class="welcome-banner-icon">
+            <i id="bannerIcon" class="fas fa-user-injured"></i>
+          </div>
+        </div>
+
+        <!-- Stats Row -->
+        <div class="stats-grid" id="statsGrid">
+          <!-- populated by JS -->
+        </div>
+
+        <!-- Panels Row -->
+        <div class="row g-4">
+          <!-- Quick Actions -->
+          <div class="col-lg-8">
+            <div class="db-panel">
+              <div class="db-panel-header">
+                <h6>
+                  <i class="fas fa-bolt me-2 text-primary"></i>Quick Actions
+                </h6>
+              </div>
+              <div class="quick-actions" id="quickActions">
+                <!-- populated by JS -->
+              </div>
+            </div>
+          </div>
+
+          <!-- Profile Card -->
+          <div class="col-lg-4">
+            <div class="profile-info-card">
+              <div class="pic-header"></div>
+              <div class="profile-avatar-lg" id="profileAvatar"></div>
+              <div class="profile-info-body">
+                <div class="pname" id="profileName">—</div>
+                <div class="pemail" id="profileEmail">—</div>
+                <div class="role-badge-lg">
+                  <i id="profileRoleIcon" class="fas fa-user me-1"></i
+                  ><span id="profileRole">—</span>
+                </div>
+                <div class="profile-details">
+                  <div class="profile-detail-row">
+                    <span class="dk">Status</span>
+                    <span class="dv" style="color: #2e7d32"
+                      ><i class="fas fa-circle" style="font-size: 8px"></i>
+                      Active</span
+                    >
+                  </div>
+                  <div class="profile-detail-row">
+                    <span class="dk">Member since</span>
+                    <span class="dv" id="memberSince">—</span>
+                  </div>
+                  <div class="profile-detail-row">
+                    <span class="dk">Role</span>
+                    <span class="dv" id="profileRoleDetail">—</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Recent Activity -->
+          <div class="col-12">
+            <div class="db-panel">
+              <div class="db-panel-header">
+                <h6>
+                  <i class="fas fa-clock-rotate-left me-2 text-primary"></i
+                  >Recent Activity
+                </h6>
+              </div>
+              <div class="activity-list" id="activityList">
+                <!-- populated by JS -->
+              </div>
+            </div>
+          </div>
+        </div>
+      </main>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+      // ── Load user data ──
+      const raw = sessionStorage.getItem("user");
+      if (!raw) {
+        window.location.href = "login.html";
+      }
+      const user = JSON.parse(raw);
+      const { email, role } = user;
+
+      // Derive display name from email
+      const namePart = email
+        .split("@")[0]
+        .replace(/[._]/g, " ")
+        .replace(/\b\w/g, (c) => c.toUpperCase());
+
+      // ── Role config ──
+      const roleConfig = {
+        patient: {
+          icon: "fa-user-injured",
+          color: "#1976d2",
+          stats: [
+            {
+              icon: "fa-calendar-check",
+              cls: "blue",
+              val: "3",
+              lbl: "Upcoming Appointments",
+              trend: "up",
+              t: "↑ 1 this week",
+            },
+            {
+              icon: "fa-file-medical",
+              cls: "green",
+              val: "12",
+              lbl: "Medical Records",
+              trend: "up",
+              t: "↑ 2 new",
+            },
+            {
+              icon: "fa-pills",
+              cls: "orange",
+              val: "4",
+              lbl: "Active Prescriptions",
+              trend: "",
+              t: "",
+            },
+            {
+              icon: "fa-heart-pulse",
+              cls: "red",
+              val: "72",
+              lbl: "Heart Rate (bpm)",
+              trend: "up",
+              t: "Normal",
+            },
+          ],
+          actions: [
+            { icon: "fa-calendar-plus", label: "Book Appointment" },
+            { icon: "fa-file-medical", label: "My Records" },
+            { icon: "fa-pills", label: "Prescriptions" },
+            { icon: "fa-video", label: "Teleconsult" },
+            { icon: "fa-notes-medical", label: "Health Notes" },
+            { icon: "fa-bell", label: "Reminders" },
+          ],
+          nav: [
+            {
+              section: "Main",
+              items: [
+                {
+                  icon: "fa-gauge",
+                  label: "Dashboard",
+                  href: "dashboard.html",
+                  active: true,
+                },
+                {
+                  icon: "fa-calendar-check",
+                  label: "Appointments",
+                  href: "appointments.html",
+                  badge: "3",
+                },
+                {
+                  icon: "fa-file-medical",
+                  label: "Medical Records",
+                  href: "medical-records.html",
+                },
+              ],
+            },
+            {
+              section: "Health",
+              items: [
+                {
+                  icon: "fa-pills",
+                  label: "Prescriptions",
+                  href: "prescriptions.html",
+                },
+                {
+                  icon: "fa-heart-pulse",
+                  label: "Vitals",
+                  href: "vitals.html",
+                },
+                {
+                  icon: "fa-notes-medical",
+                  label: "Health Notes",
+                  href: "health-notes.html",
+                },
+              ],
+            },
+            {
+              section: "Account",
+              items: [
+                { icon: "fa-user", label: "My Profile", href: "profile.html" },
+                {
+                  icon: "fa-bell",
+                  label: "Notifications",
+                  href: "notifications.html",
+                },
+                { icon: "fa-gear", label: "Settings", href: "settings.html" },
+              ],
+            },
+          ],
+          activity: [
+            {
+              color: "#1976d2",
+              text: "Appointment scheduled with Dr. Priya – Cardiology",
+              time: "2 hrs ago",
+            },
+            {
+              color: "#2e7d32",
+              text: "Prescription renewed: Metformin 500mg",
+              time: "Yesterday",
+            },
+            {
+              color: "#e65100",
+              text: "Lab results uploaded to your records",
+              time: "2 days ago",
+            },
+            {
+              color: "#6a1b9a",
+              text: "Teleconsultation completed with Dr. Raj",
+              time: "3 days ago",
+            },
+          ],
+          subtext: "Manage your health, appointments and records.",
+        },
+        doctor: {
+          icon: "fa-user-doctor",
+          color: "#0d47a1",
+          stats: [
+            {
+              icon: "fa-calendar-day",
+              cls: "blue",
+              val: "8",
+              lbl: "Today's Appointments",
+              trend: "up",
+              t: "↑ 2 from yesterday",
+            },
+            {
+              icon: "fa-bed-pulse",
+              cls: "green",
+              val: "24",
+              lbl: "Active Patients",
+              trend: "up",
+              t: "↑ 5 this week",
+            },
+            {
+              icon: "fa-file-waveform",
+              cls: "purple",
+              val: "6",
+              lbl: "Pending Reports",
+              trend: "down",
+              t: "↓ 3 from last week",
+            },
+            {
+              icon: "fa-video",
+              cls: "teal",
+              val: "2",
+              lbl: "Teleconsults Today",
+              trend: "",
+              t: "",
+            },
+          ],
+          actions: [
+            { icon: "fa-calendar-day", label: "Today's Schedule" },
+            { icon: "fa-users", label: "My Patients" },
+            { icon: "fa-file-waveform", label: "Reports" },
+            { icon: "fa-prescription", label: "Write Rx" },
+            { icon: "fa-video", label: "Start Teleconsult" },
+            { icon: "fa-notes-medical", label: "Clinical Notes" },
+          ],
+          nav: [
+            {
+              section: "Main",
+              items: [
+                {
+                  icon: "fa-gauge",
+                  label: "Dashboard",
+                  href: "dashboard.html",
+                  active: true,
+                },
+                {
+                  icon: "fa-calendar-day",
+                  label: "Schedule",
+                  href: "appointments.html",
+                  badge: "8",
+                },
+                { icon: "fa-users", label: "Patients", href: "patients.html" },
+              ],
+            },
+            {
+              section: "Clinical",
+              items: [
+                {
+                  icon: "fa-file-waveform",
+                  label: "Reports",
+                  href: "reports.html",
+                  badge: "6",
+                },
+                {
+                  icon: "fa-prescription",
+                  label: "Prescriptions",
+                  href: "prescriptions.html",
+                },
+                {
+                  icon: "fa-notes-medical",
+                  label: "Clinical Notes",
+                  href: "health-notes.html",
+                },
+              ],
+            },
+            {
+              section: "Account",
+              items: [
+                { icon: "fa-user", label: "My Profile", href: "profile.html" },
+                {
+                  icon: "fa-bell",
+                  label: "Notifications",
+                  href: "notifications.html",
+                },
+                { icon: "fa-gear", label: "Settings", href: "settings.html" },
+              ],
+            },
+          ],
+          activity: [
+            {
+              color: "#1976d2",
+              text: "Patient Ravi Kumar – Check-in complete",
+              time: "30 min ago",
+            },
+            {
+              color: "#2e7d32",
+              text: "Prescription sent for Patient #204",
+              time: "1 hr ago",
+            },
+            {
+              color: "#e65100",
+              text: "Lab report flagged for review – Patient #198",
+              time: "3 hrs ago",
+            },
+            {
+              color: "#6a1b9a",
+              text: "Teleconsultation completed with 2 patients",
+              time: "Yesterday",
+            },
+          ],
+          subtext: "Manage your schedule, patients and clinical notes.",
+        },
+        staff: {
+          icon: "fa-user-nurse",
+          color: "#00695c",
+          stats: [
+            {
+              icon: "fa-calendar-check",
+              cls: "blue",
+              val: "15",
+              lbl: "Appointments Today",
+              trend: "",
+              t: "",
+            },
+            {
+              icon: "fa-bed",
+              cls: "green",
+              val: "42",
+              lbl: "Occupied Beds",
+              trend: "up",
+              t: "↑ 4 from morning",
+            },
+            {
+              icon: "fa-triangle-exclamation",
+              cls: "orange",
+              val: "5",
+              lbl: "Pending Tasks",
+              trend: "down",
+              t: "↓ 2 completed",
+            },
+            {
+              icon: "fa-user-clock",
+              cls: "teal",
+              val: "3",
+              lbl: "Staff on Duty",
+              trend: "",
+              t: "",
+            },
+          ],
+          actions: [
+            { icon: "fa-calendar-plus", label: "Add Appointment" },
+            { icon: "fa-bed", label: "Bed Management" },
+            { icon: "fa-clipboard-list", label: "Task Board" },
+            { icon: "fa-file-invoice", label: "Billing" },
+            { icon: "fa-user-plus", label: "Register Patient" },
+            { icon: "fa-bell", label: "Alerts" },
+          ],
+          nav: [
+            {
+              section: "Main",
+              items: [
+                {
+                  icon: "fa-gauge",
+                  label: "Dashboard",
+                  href: "dashboard.html",
+                  active: true,
+                },
+                {
+                  icon: "fa-calendar-check",
+                  label: "Appointments",
+                  href: "appointments.html",
+                },
+                { icon: "fa-users", label: "Patients", href: "patients.html" },
+              ],
+            },
+            {
+              section: "Ops",
+              items: [
+                {
+                  icon: "fa-file-invoice",
+                  label: "Reports",
+                  href: "reports.html",
+                },
+                {
+                  icon: "fa-notes-medical",
+                  label: "Health Notes",
+                  href: "health-notes.html",
+                },
+                {
+                  icon: "fa-pills",
+                  label: "Prescriptions",
+                  href: "prescriptions.html",
+                },
+              ],
+            },
+            {
+              section: "Account",
+              items: [
+                { icon: "fa-user", label: "My Profile", href: "profile.html" },
+                {
+                  icon: "fa-bell",
+                  label: "Notifications",
+                  href: "notifications.html",
+                },
+                { icon: "fa-gear", label: "Settings", href: "settings.html" },
+              ],
+            },
+          ],
+          activity: [
+            {
+              color: "#1976d2",
+              text: "Appointment #301 confirmed for 10:30 AM",
+              time: "15 min ago",
+            },
+            {
+              color: "#2e7d32",
+              text: "Bed B-12 assigned to new patient",
+              time: "1 hr ago",
+            },
+            {
+              color: "#e65100",
+              text: "Billing invoice #2045 generated",
+              time: "2 hrs ago",
+            },
+            {
+              color: "#00695c",
+              text: "Patient discharge processed for ward A",
+              time: "Yesterday",
+            },
+          ],
+          subtext: "Coordinate operations, beds and appointments.",
+        },
+        admin: {
+          icon: "fa-user-shield",
+          color: "#4a148c",
+          stats: [
+            {
+              icon: "fa-users",
+              cls: "blue",
+              val: "128",
+              lbl: "Total Users",
+              trend: "up",
+              t: "↑ 8 this month",
+            },
+            {
+              icon: "fa-user-doctor",
+              cls: "green",
+              val: "22",
+              lbl: "Active Doctors",
+              trend: "",
+              t: "",
+            },
+            {
+              icon: "fa-calendar-check",
+              cls: "orange",
+              val: "314",
+              lbl: "Appointments (Month)",
+              trend: "up",
+              t: "↑ 12%",
+            },
+            {
+              icon: "fa-chart-line",
+              cls: "purple",
+              val: "94%",
+              lbl: "System Uptime",
+              trend: "up",
+              t: "All systems OK",
+            },
+          ],
+          actions: [
+            { icon: "fa-users-gear", label: "Manage Users" },
+            { icon: "fa-user-doctor", label: "Doctors" },
+            { icon: "fa-chart-bar", label: "Analytics" },
+            { icon: "fa-file-invoice", label: "Reports" },
+            { icon: "fa-shield-halved", label: "Security" },
+            { icon: "fa-gear", label: "System Settings" },
+          ],
+          nav: [
+            {
+              section: "Overview",
+              items: [
+                {
+                  icon: "fa-gauge",
+                  label: "Dashboard",
+                  href: "dashboard.html",
+                  active: true,
+                },
+                {
+                  icon: "fa-users-gear",
+                  label: "User Management",
+                  href: "user-management.html",
+                },
+                {
+                  icon: "fa-chart-bar",
+                  label: "Analytics",
+                  href: "analytics.html",
+                },
+              ],
+            },
+            {
+              section: "Clinical",
+              items: [
+                {
+                  icon: "fa-calendar-check",
+                  label: "Appointments",
+                  href: "appointments.html",
+                },
+                { icon: "fa-users", label: "Patients", href: "patients.html" },
+                {
+                  icon: "fa-file-medical",
+                  label: "Medical Records",
+                  href: "medical-records.html",
+                },
+                {
+                  icon: "fa-pills",
+                  label: "Prescriptions",
+                  href: "prescriptions.html",
+                },
+                {
+                  icon: "fa-heart-pulse",
+                  label: "Vitals",
+                  href: "vitals.html",
+                },
+                {
+                  icon: "fa-notes-medical",
+                  label: "Health Notes",
+                  href: "health-notes.html",
+                },
+              ],
+            },
+            {
+              section: "Reports",
+              items: [
+                {
+                  icon: "fa-file-waveform",
+                  label: "Reports",
+                  href: "reports.html",
+                },
+              ],
+            },
+            {
+              section: "Account",
+              items: [
+                { icon: "fa-user", label: "My Profile", href: "profile.html" },
+                {
+                  icon: "fa-bell",
+                  label: "Notifications",
+                  href: "notifications.html",
+                },
+                { icon: "fa-gear", label: "Settings", href: "settings.html" },
+              ],
+            },
+          ],
+          activity: [
+            {
+              color: "#4a148c",
+              text: "New doctor account created: Dr. Ananya Menon",
+              time: "20 min ago",
+            },
+            {
+              color: "#1976d2",
+              text: "Monthly report generated – October 2025",
+              time: "2 hrs ago",
+            },
+            {
+              color: "#2e7d32",
+              text: "System backup completed successfully",
+              time: "5 hrs ago",
+            },
+            {
+              color: "#e65100",
+              text: "Security audit log reviewed",
+              time: "Yesterday",
+            },
+          ],
+          subtext: "Full control over users, reports and system settings.",
+        },
+      };
+
+      const cfg = roleConfig[role] || roleConfig.patient;
+      const initials = namePart
+        .split(" ")
+        .map((w) => w[0])
+        .join("")
+        .slice(0, 2);
+      const today = new Date().toLocaleDateString("en-IN", {
+        weekday: "long",
+        day: "numeric",
+        month: "long",
+        year: "numeric",
+      });
+
+      // ── Populate sidebar ──
+      document.getElementById("sidebarAvatar").textContent = initials;
+      document.getElementById("sidebarName").textContent = namePart;
+      document.getElementById("sidebarRole").textContent =
+        role.charAt(0).toUpperCase() + role.slice(1);
+
+      const nav = document.getElementById("sidebarNav");
+      cfg.nav.forEach((group) => {
+        const sec = document.createElement("div");
+        sec.className = "db-nav-section";
+        sec.innerHTML = `<div class="db-nav-label">${group.section}</div>`;
+        group.items.forEach((item) => {
+          const a = document.createElement("a");
+          a.className = "db-nav-item" + (item.active ? " active" : "");
+          a.href = item.href || "#";
+          a.innerHTML = `<i class="fas ${item.icon}"></i> ${item.label}${item.badge ? `<span class="badge-pill">${item.badge}</span>` : ""}`;
+          sec.appendChild(a);
+        });
+        nav.appendChild(sec);
+      });
+
+      // ── Topbar ──
+      document.getElementById("topbarTitle").textContent =
+        role.charAt(0).toUpperCase() + role.slice(1) + " Dashboard";
+      document.getElementById("topbarSub").textContent = today;
+      document.getElementById("topbarAvatar").textContent = initials;
+      document.getElementById("topbarName").textContent = namePart;
+
+      // ── Welcome banner ──
+      document.getElementById("welcomeHeading").textContent =
+        `Hello, ${namePart}! 👋`;
+      document.getElementById("welcomeSubtext").textContent = cfg.subtext;
+      document.getElementById("wEmail").textContent = email;
+      document.getElementById("wRole").textContent =
+        role.charAt(0).toUpperCase() + role.slice(1);
+      document.getElementById("wDate").textContent =
+        new Date().toLocaleDateString("en-IN", {
+          day: "numeric",
+          month: "short",
+          year: "numeric",
+        });
+      document.getElementById("wRoleIcon").className = `fas ${cfg.icon}`;
+      document.getElementById("bannerIcon").className = `fas ${cfg.icon}`;
+
+      // ── Stats ──
+      const grid = document.getElementById("statsGrid");
+      cfg.stats.forEach((s) => {
+        grid.innerHTML += `
+          <div class="stat-card">
+            <div class="stat-icon ${s.cls}"><i class="fas ${s.icon}"></i></div>
+            <div class="stat-info">
+              <div class="val">${s.val}</div>
+              <div class="lbl">${s.lbl}</div>
+              ${s.t ? `<div class="trend ${s.trend}">${s.t}</div>` : ""}
+            </div>
+          </div>`;
+      });
+
+      // ── Quick Actions ──
+      const qa = document.getElementById("quickActions");
+      cfg.actions.forEach((a) => {
+        qa.innerHTML += `<a href="#" class="qa-btn"><i class="fas ${a.icon}"></i><span>${a.label}</span></a>`;
+      });
+
+      // ── Profile card ──
+      document.getElementById("profileAvatar").textContent = initials;
+      document.getElementById("profileName").textContent = namePart;
+      document.getElementById("profileEmail").textContent = email;
+      document.getElementById("profileRole").textContent =
+        role.charAt(0).toUpperCase() + role.slice(1);
+      document.getElementById("profileRoleIcon").className =
+        `fas ${cfg.icon} me-1`;
+      document.getElementById("profileRoleDetail").textContent =
+        role.charAt(0).toUpperCase() + role.slice(1);
+      document.getElementById("memberSince").textContent =
+        new Date().toLocaleDateString("en-IN", {
+          month: "short",
+          year: "numeric",
+        });
+
+      // ── Activity ──
+      const al = document.getElementById("activityList");
+      cfg.activity.forEach((a) => {
+        al.innerHTML += `
+          <div class="activity-item">
+            <div class="activity-dot" style="background:${a.color}"></div>
+            <span class="ai-text">${a.text}</span>
+            <span class="ai-time">${a.time}</span>
+          </div>`;
+      });
+
+      function logout() {
+        sessionStorage.removeItem("user");
+        window.location.href = "login.html";
+      }
+    </script>
+  </body>
+</html>
