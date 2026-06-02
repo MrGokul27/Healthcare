@@ -1,0 +1,126 @@
+/* =============================================
+   Blog — Page Styles
+   ============================================= */
+
+/* ── Breadcrumb ── */
+.blog-breadcrumb {
+  position: relative;
+  padding: 140px 0 80px;
+  background: url("https://images.unsplash.com/photo-1450101499163-c8848c66ca85?w=1600&q=80")
+    center/cover no-repeat;
+  text-align: center;
+}
+
+.blog-breadcrumb-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    135deg,
+    rgba(10, 25, 47, 0.85),
+    rgba(25, 118, 210, 0.7)
+  );
+}
+
+.blog-breadcrumb .container {
+  position: relative;
+  z-index: 1;
+}
+
+.blog-breadcrumb h1 {
+  font-size: 48px;
+  font-weight: 800;
+  color: #fff;
+  margin-bottom: 16px;
+}
+
+.blog-breadcrumb .breadcrumb {
+  background: transparent;
+  padding: 0;
+  margin: 0;
+}
+
+.blog-breadcrumb .breadcrumb-item a {
+  color: rgba(255, 255, 255, 0.8);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+.blog-breadcrumb .breadcrumb-item a:hover {
+  color: #fff;
+}
+
+.blog-breadcrumb .breadcrumb-item.active {
+  color: #64b5f6;
+}
+
+.blog-breadcrumb .breadcrumb-item + .breadcrumb-item::before {
+  color: rgba(255, 255, 255, 0.5);
+}
+
+/* ── Pagination ── */
+.page-item .page-link {
+  margin: 0 4px;
+}
+
+/* ── Blog Grid Background ── */
+.blog-grid-section {
+  background-color: #f8fbff;
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+}
+
+.blog-grid-section::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background:
+    radial-gradient(
+      circle at 0% 0%,
+      rgba(25, 118, 210, 0.05) 0%,
+      transparent 40%
+    ),
+    radial-gradient(
+      circle at 100% 100%,
+      rgba(100, 181, 246, 0.08) 0%,
+      transparent 40%
+    );
+  z-index: -1;
+  pointer-events: none;
+}
+
+.blog-grid-section::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%231976d2' fill-opacity='0.02'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+  z-index: -1;
+  pointer-events: none;
+}
+
+@media (max-width: 991px) {
+  .blog-breadcrumb {
+    margin-top: 70px;
+  }
+  .blog-breadcrumb h1 {
+    font-size: 38px;
+  }
+}
+
+@media (max-width: 767px) {
+  .blog-breadcrumb {
+    padding: 110px 0 50px;
+  }
+  .blog-breadcrumb h1 {
+    font-size: 32px;
+  }
+}
+
+@media (max-width: 575px) {
+  .blog-breadcrumb h1 {
+    font-size: 28px;
+  }
+}

@@ -544,7 +544,7 @@
 
 @media (max-width: 991px) {
   .about-breadcrumb {
-    padding: 110px 0 60px;
+    margin-top: 70px;
   }
   .about-breadcrumb h1 {
     font-size: 36px;
