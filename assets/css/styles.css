@@ -114,17 +114,30 @@ body {
   font-weight: 500;
   color: #fff !important;
   padding: 6px 14px !important;
-  transition: color 0.2s;
+  transition: all 0.3s ease;
+  position: relative;
 }
 
 .nav-link:hover,
 .nav-link.active {
-  color: #bbdefb !important;
+  color: #64b5f6 !important;
 }
 
-.navbar.scrolled .nav-link:hover,
-.navbar.scrolled .nav-link.active {
-  color: #bbdefb !important;
+.nav-link::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 14px;
+  right: 14px;
+  height: 2px;
+  background: #64b5f6;
+  transform: scaleX(0);
+  transition: transform 0.3s ease;
+}
+
+.nav-link:hover::after,
+.nav-link.active::after {
+  transform: scaleX(1);
 }
 
 .navbar.scrolled .btn-primary {

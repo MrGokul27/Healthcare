@@ -39,6 +39,39 @@ Promise.all([
   loadComponent("header-placeholder", componentBase + "header.html"),
   loadComponent("footer-placeholder", componentBase + "footer.html"),
 ]).then(() => {
+  // ── Set active state in navigation ────────
+  const currentPath = window.location.pathname;
+
+  // Helper to normalize paths for consistent comparison
+  function getCanonicalPath(urlPath) {
+    // Remove trailing slash unless it's just "/"
+    let path =
+      urlPath.endsWith("/") && urlPath.length > 1
+        ? urlPath.slice(0, -1)
+        : urlPath;
+    // Treat /index.html as /
+    if (path.endsWith("/index.html")) {
+      path = path.slice(0, -10); // Remove "/index.html"
+      if (path === "") path = "/"; // If it becomes empty, it's the root
+    }
+    return path;
+  }
+
+  const canonicalCurrentPath = getCanonicalPath(currentPath);
+
+  document.querySelectorAll(".navbar-nav .nav-link").forEach((link) => {
+    // Skip links that are just '#' or empty href
+    if (link.getAttribute("href") === "#" || link.getAttribute("href") === "") {
+      return;
+    }
+    const linkPath = new URL(link.href, window.location.origin).pathname;
+    const canonicalLinkPath = getCanonicalPath(linkPath);
+
+    if (canonicalCurrentPath === canonicalLinkPath) {
+      link.classList.add("active");
+    }
+  });
+
   const navbar = document.querySelector(".navbar");
   function handleScroll() {
     navbar.classList.toggle("scrolled", window.scrollY > 50);
@@ -46,19 +79,37 @@ Promise.all([
   window.addEventListener("scroll", handleScroll);
   handleScroll();
 
-  // Redirect dead links (#) to 404 page — skip on 404 page itself
-  if (!window.location.pathname.includes("404.html")) {
-    document
-      .querySelectorAll('a[href="#"], a:not([href]), a[href=""]')
-      .forEach((link) => {
-        link.addEventListener("click", (e) => {
-          e.preventDefault();
-          const base = window.location.pathname.replace(/\/[^\/]*$/, "/");
-          window.location.href = base + "404.html";
-        });
-      });
-  }
+  attachDeadLinkRedirects();
 });
+
+// Resolve correct 404 path from any page depth
+function get404Path() {
+  return isInSubdir ? "../404.html" : "404.html";
+}
+
+// Attach click redirect to all dead links (#, empty, missing href)
+function attachDeadLinkRedirects() {
+  if (window.location.pathname.includes("404.html")) return;
+  const target = get404Path();
+  document
+    .querySelectorAll('a[href="#"], a:not([href]), a[href=""]')
+    .forEach((link) => {
+      if (link.dataset.deadLinked) return;
+      link.dataset.deadLinked = "1";
+      link.addEventListener("click", (e) => {
+        e.preventDefault();
+        window.location.href = target;
+      });
+    });
+}
+
+// Re-run whenever new nodes are added to the DOM (e.g. injected header/footer links)
+if (!window.location.pathname.includes("404.html")) {
+  new MutationObserver(attachDeadLinkRedirects).observe(document.body, {
+    childList: true,
+    subtree: true,
+  });
+}
 
 // Counter animation
 function animateCounters() {

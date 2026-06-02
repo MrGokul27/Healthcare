@@ -1,0 +1,296 @@
+/* =============================================
+   Departments — Page Styles
+   ============================================= */
+
+/* ── Breadcrumb ── */
+.dept-breadcrumb {
+  position: relative;
+  padding: 140px 0 80px;
+  background: url("https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?w=1600&q=80")
+    center/cover no-repeat;
+  text-align: center;
+}
+.dept-breadcrumb-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    135deg,
+    rgba(10, 25, 47, 0.82),
+    rgba(13, 71, 161, 0.7)
+  );
+}
+.dept-breadcrumb .container {
+  position: relative;
+  z-index: 1;
+}
+.dept-breadcrumb h1 {
+  font-size: 48px;
+  font-weight: 800;
+  color: #fff;
+  margin-bottom: 16px;
+}
+.dept-breadcrumb .breadcrumb {
+  background: transparent;
+  padding: 0;
+  margin: 0;
+}
+.dept-breadcrumb .breadcrumb-item a {
+  color: rgba(255, 255, 255, 0.75);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+.dept-breadcrumb .breadcrumb-item a:hover {
+  color: #fff;
+}
+.dept-breadcrumb .breadcrumb-item.active {
+  color: #90caf9;
+}
+.dept-breadcrumb .breadcrumb-item + .breadcrumb-item::before {
+  color: rgba(255, 255, 255, 0.4);
+}
+
+/* ── Department Cards ── */
+.dept-cards-section {
+  background: #f7f9fc;
+}
+
+.dept-card {
+  background: #fff;
+  border-radius: 18px;
+  overflow: hidden;
+  box-shadow: 0 4px 24px rgba(25, 118, 210, 0.08);
+  transition:
+    transform 0.3s,
+    box-shadow 0.3s;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+.dept-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 20px 48px rgba(25, 118, 210, 0.16);
+}
+
+.dept-card-thumb {
+  position: relative;
+  overflow: hidden;
+}
+.dept-card-thumb img {
+  width: 100%;
+  height: 220px;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.4s;
+}
+.dept-card:hover .dept-card-thumb img {
+  transform: scale(1.06);
+}
+
+.dept-card-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(13, 71, 161, 0.6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+.dept-card:hover .dept-card-overlay {
+  opacity: 1;
+}
+
+.dept-card-link {
+  color: #fff;
+  font-size: 14px;
+  font-weight: 600;
+  text-decoration: none;
+  border: 2px solid rgba(255, 255, 255, 0.7);
+  padding: 9px 22px;
+  border-radius: 30px;
+  transition:
+    background 0.2s,
+    border-color 0.2s;
+}
+.dept-card-link:hover {
+  background: rgba(255, 255, 255, 0.2);
+  border-color: #fff;
+  color: #fff;
+}
+
+.dept-card-body {
+  padding: 28px 24px 26px;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.dept-card-icon {
+  width: 56px;
+  height: 56px;
+  background: #e3f2fd;
+  border-radius: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 22px;
+  color: #1976d2;
+  margin-bottom: 16px;
+  transition:
+    background 0.3s,
+    color 0.3s;
+}
+.dept-card:hover .dept-card-icon {
+  background: #1976d2;
+  color: #fff;
+}
+
+.dept-card-body h4 {
+  font-size: 18px;
+  font-weight: 700;
+  color: #0d1b2a;
+  margin-bottom: 10px;
+}
+.dept-card-body h4 a {
+  color: inherit;
+  text-decoration: none;
+  transition: color 0.2s;
+}
+.dept-card-body h4 a:hover {
+  color: #1976d2;
+}
+
+.dept-card-body p {
+  font-size: 14px;
+  color: #777;
+  line-height: 1.7;
+  flex: 1;
+  margin-bottom: 18px;
+}
+
+.dept-read-more {
+  font-size: 13px;
+  font-weight: 600;
+  color: #1976d2;
+  text-decoration: none;
+  transition: gap 0.2s;
+}
+.dept-read-more:hover {
+  text-decoration: underline;
+}
+
+/* ── Stats ── */
+.dept-stats-section {
+  background: #f0f6ff;
+  padding: 80px 0;
+}
+.dept-stat-item {
+  border-right: 1px solid rgba(255, 255, 255, 0.15);
+  padding: 10px 0;
+}
+.dept-stat-item:last-child {
+  border-right: none;
+}
+
+/* ── Consultation ── */
+.dept-consult-section {
+  background: #fff;
+}
+
+.consult-step {
+  background: #f0f7ff;
+  border-radius: 14px;
+  padding: 28px 20px;
+  text-align: center;
+  border-top: 3px solid #1976d2;
+  transition:
+    background 0.25s,
+    transform 0.25s;
+}
+.consult-step:hover {
+  background: #e3f2fd;
+  transform: translateY(-4px);
+}
+.consult-step-icon {
+  width: 58px;
+  height: 58px;
+  background: #1976d2;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 22px;
+  color: #fff;
+  margin: 0 auto 14px;
+}
+.consult-step h5 {
+  font-size: 15px;
+  font-weight: 600;
+  color: #0d1b2a;
+  margin: 0;
+}
+
+.dept-appt-box {
+  background: #fff;
+  border-radius: 20px;
+  padding: 40px 36px;
+  box-shadow: 0 8px 40px rgba(25, 118, 210, 0.12);
+  border-top: 4px solid #1976d2;
+}
+.dept-appt-box h4 {
+  font-size: 20px;
+  font-weight: 700;
+  color: #0d1b2a;
+  margin-bottom: 24px;
+  text-align: center;
+}
+.dept-appt-box .form-control,
+.dept-appt-box .form-select {
+  border-radius: 10px;
+  border-color: #e0eaf5;
+  padding: 11px 16px;
+  font-size: 14px;
+  color: #555;
+}
+.dept-appt-box .form-control:focus,
+.dept-appt-box .form-select:focus {
+  border-color: #1976d2;
+  box-shadow: 0 0 0 3px rgba(25, 118, 210, 0.1);
+}
+
+/* =============================================
+   Responsive
+   ============================================= */
+@media (max-width: 991px) {
+  .dept-breadcrumb {
+    padding: 110px 0 60px;
+  }
+  .dept-breadcrumb h1 {
+    font-size: 36px;
+  }
+}
+
+@media (max-width: 767px) {
+  .dept-breadcrumb {
+    padding: 100px 0 50px;
+  }
+  .dept-breadcrumb h1 {
+    font-size: 30px;
+  }
+  .dept-appt-box {
+    padding: 28px 20px;
+  }
+  .dept-stat-item {
+    border-right: none;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+  }
+  .dept-stat-item:last-child {
+    border-bottom: none;
+  }
+}
+
+@media (max-width: 575px) {
+  .dept-breadcrumb h1 {
+    font-size: 26px;
+  }
+}
