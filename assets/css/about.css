@@ -131,8 +131,9 @@
 }
 .milestone-text p {
   font-size: 13px;
-  color: #777;
+  color: #555;
   margin: 0;
+  line-height: 1.6;
 }
 
 /* ── Why Choose Us — icon cards ── */
@@ -193,9 +194,9 @@
 }
 .why-card p {
   font-size: 14px;
-  color: #666;
+  color: #444;
   margin: 0;
-  line-height: 1.7;
+  line-height: 1.8;
 }
 
 /* ── Departments — numbered list ── */
@@ -244,9 +245,9 @@
 }
 .dept-list-info p {
   font-size: 13px;
-  color: #777;
+  color: #555;
   margin: 0;
-  line-height: 1.6;
+  line-height: 1.7;
 }
 .dept-arrow {
   color: #ccc;
@@ -290,7 +291,7 @@
 }
 .about-stat-item span {
   font-size: 13px;
-  color: rgba(255, 255, 255, 0.6);
+  color: rgba(255, 255, 255, 0.85);
   text-transform: uppercase;
   letter-spacing: 1.5px;
   display: block;
@@ -342,9 +343,9 @@
 }
 .doc-profile-info p {
   font-size: 13px;
-  color: #777;
+  color: #555;
   margin-bottom: 12px;
-  line-height: 1.6;
+  line-height: 1.7;
 }
 .doc-profile-meta {
   display: flex;
@@ -391,7 +392,7 @@
 }
 .testi-featured p {
   font-size: 15px;
-  color: rgba(255, 255, 255, 0.9);
+  color: rgba(255, 255, 255, 0.95);
   line-height: 1.9;
   margin-bottom: 28px;
 }
@@ -497,7 +498,7 @@
   color: #90caf9;
 }
 .about-cta-section p {
-  color: rgba(255, 255, 255, 0.75);
+  color: rgba(255, 255, 255, 0.95);
   font-size: 15px;
   margin: 0;
 }

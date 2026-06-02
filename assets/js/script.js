@@ -113,7 +113,7 @@ if (!window.location.pathname.includes("404.html")) {
 
 // Counter animation
 function animateCounters() {
-  document.querySelectorAll(".fun-fact-number").forEach((el) => {
+  document.querySelectorAll(".fun-fact-number, .about-stat-number").forEach((el) => {
     const target = +el.dataset.to;
     const duration = 2000;
     const step = target / (duration / 16);
@@ -141,5 +141,6 @@ const observer = new IntersectionObserver(
   { threshold: 0.3 },
 );
 
-const funFactsSection = document.querySelector(".fun-facts-area");
-if (funFactsSection) observer.observe(funFactsSection);
+document.querySelectorAll(".fun-facts-area, .about-stats-section").forEach((section) => {
+  observer.observe(section);
+});
