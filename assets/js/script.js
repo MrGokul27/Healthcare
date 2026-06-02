@@ -111,22 +111,27 @@ if (!window.location.pathname.includes("404.html")) {
   });
 }
 
+// Initialize animations
+attachAnimationsOnScroll();
+
 // Counter animation
 function animateCounters() {
-  document.querySelectorAll(".fun-fact-number, .about-stat-number").forEach((el) => {
-    const target = +el.dataset.to;
-    const duration = 2000;
-    const step = target / (duration / 16);
-    let current = 0;
-    const timer = setInterval(() => {
-      current += step;
-      if (current >= target) {
-        current = target;
-        clearInterval(timer);
-      }
-      el.textContent = Math.floor(current).toLocaleString();
-    }, 16);
-  });
+  document
+    .querySelectorAll(".fun-fact-number, .about-stat-number")
+    .forEach((el) => {
+      const target = +el.dataset.to;
+      const duration = 2000;
+      const step = target / (duration / 16);
+      let current = 0;
+      const timer = setInterval(() => {
+        current += step;
+        if (current >= target) {
+          current = target;
+          clearInterval(timer);
+        }
+        el.textContent = Math.floor(current).toLocaleString();
+      }, 16);
+    });
 }
 
 const observer = new IntersectionObserver(
@@ -141,6 +146,44 @@ const observer = new IntersectionObserver(
   { threshold: 0.3 },
 );
 
-document.querySelectorAll(".fun-facts-area, .about-stats-section").forEach((section) => {
-  observer.observe(section);
-});
+document
+  .querySelectorAll(".fun-facts-area, .about-stats-section")
+  .forEach((section) => {
+    observer.observe(section);
+  });
+
+// ── Animations on Scroll ─────────────────────
+/**
+ * Attaches Intersection Observers to elements with 'animate-on-scroll' class
+ * to trigger Animate.css animations when they enter the viewport.
+ */
+function attachAnimationsOnScroll() {
+  const animatedElements = document.querySelectorAll(".animate-on-scroll");
+
+  if (animatedElements.length === 0) {
+    return; // No elements to observe
+  }
+
+  const animationObserver = new IntersectionObserver(
+    (entries, observer) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          const element = entry.target;
+          const animationClass = element.dataset.animation;
+          const animationDelay = element.dataset.delay;
+
+          element.classList.add("animate__animated", animationClass);
+          if (animationDelay) {
+            element.style.setProperty("--animate-delay", animationDelay);
+          }
+          observer.unobserve(element); // Stop observing once animated
+        }
+      });
+    },
+    { threshold: 0.1 }, // Trigger when 10% of the element is visible
+  );
+
+  animatedElements.forEach((element) => {
+    animationObserver.observe(element);
+  });
+}

@@ -50,6 +50,14 @@
 }
 
 /* ── Our Story — mosaic image ── */
+.about-story-section {
+  background:
+    linear-gradient(rgba(255, 255, 255, 0.92), rgba(240, 247, 255, 0.748)),
+    url("../images/medical-heartbeat-ecg-graph-hexagonal-banner-design_1017-61321.webp")
+      center/cover no-repeat;
+  position: relative;
+}
+
 .about-mosaic {
   position: relative;
   padding-bottom: 80px;

@@ -14,6 +14,14 @@ body {
   line-height: 1.7;
 }
 
+/* Initial state for elements animated on scroll */
+.animate-on-scroll {
+  opacity: 0;
+}
+.animate-on-scroll.animate__animated {
+  opacity: 1;
+}
+
 .section-pad {
   padding: 90px 0;
 }
@@ -269,6 +277,38 @@ body {
 /* =============================================
    About Features
    ============================================= */
+.about-features-area {
+  background: linear-gradient(180deg, #ffffff 0%, #f0f7ff 100%);
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+}
+
+.about-features-area::before {
+  content: "";
+  position: absolute;
+  top: -10%;
+  right: -5%;
+  width: 450px;
+  height: 450px;
+  background: radial-gradient(
+    circle,
+    rgba(25, 118, 210, 0.12) 0%,
+    transparent 70%
+  );
+  border-radius: 50%;
+  z-index: -1;
+  pointer-events: none;
+}
+
+.about-features-area::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%231976d2' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+  z-index: -1;
+  pointer-events: none;
+}
 
 .af-feature-list {
   list-style: none;
@@ -692,7 +732,53 @@ body {
    ============================================= */
 
 .departments-area {
-  background: #f0f6ff;
+  background: linear-gradient(135deg, #f0f7ff 0%, #ffffff 50%, #f0f7ff 100%);
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+}
+
+.departments-area::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  /* Mesh-style dual gradients for a dynamic look */
+  background:
+    radial-gradient(
+      circle at 10% 90%,
+      rgba(100, 181, 246, 0.15) 0%,
+      transparent 40%
+    ),
+    radial-gradient(
+      circle at 90% 10%,
+      rgba(25, 118, 210, 0.08) 0%,
+      transparent 40%
+    );
+  z-index: -1;
+  pointer-events: none;
+  animation: mesh-float 15s infinite alternate ease-in-out;
+}
+
+.departments-area::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  /* Unique Hexagon pattern (different from the cross pattern in other sections) */
+  background: url("data:image/svg+xml,%3Csvg width='52' height='60' viewBox='0 0 52 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M26 0l26 15v30L26 60 0 45V15z' fill='%231976d2' fill-opacity='0.02'/%3E%3C/svg%3E");
+  z-index: -1;
+  pointer-events: none;
+}
+
+@keyframes mesh-float {
+  0% {
+    transform: scale(1) translate(0, 0);
+  }
+  100% {
+    transform: scale(1.1) translate(20px, -20px);
+  }
 }
 
 .dept-tab-btn {
@@ -710,6 +796,14 @@ body {
   min-width: 120px;
   transition: all 0.3s;
   box-shadow: 0 2px 12px rgba(25, 118, 210, 0.06);
+}
+
+.dept-tab-btn:active {
+  transform: scale(0.95);
+}
+
+.dept-tab-btn span {
+  transition: transform 0.3s ease;
 }
 
 .dept-tab-icon {
@@ -738,6 +832,11 @@ body {
   transform: translateY(-3px);
 }
 
+.dept-tab-btn.active span,
+.dept-tab-btn:hover span {
+  transform: translateY(-2px);
+}
+
 .dept-tab-btn.active .dept-tab-icon,
 .dept-tab-btn:hover .dept-tab-icon {
   background: rgba(255, 255, 255, 0.2);
@@ -753,6 +852,17 @@ body {
   border-radius: 20px;
   padding: 48px;
   box-shadow: 0 8px 40px rgba(25, 118, 210, 0.1);
+  /* Enhanced tab transition */
+  opacity: 0;
+  transform: translateY(20px);
+  transition:
+    opacity 0.5s ease,
+    transform 0.5s ease;
+}
+
+.tab-content .tab-pane.active {
+  opacity: 1;
+  transform: translateY(0);
 }
 
 .tab-content .tab-pane img {
@@ -780,6 +890,32 @@ body {
   font-weight: 500;
   color: #333;
   transition: background 0.2s;
+  /* Initial state for staggered animation */
+  opacity: 0;
+  transform: translateX(-15px);
+}
+
+.tab-pane.active .dept-list li {
+  animation: deptItemSlideIn 0.4s ease forwards;
+}
+
+.tab-pane.active .dept-list li:nth-child(1) {
+  animation-delay: 0.1s;
+}
+.tab-pane.active .dept-list li:nth-child(2) {
+  animation-delay: 0.2s;
+}
+.tab-pane.active .dept-list li:nth-child(3) {
+  animation-delay: 0.3s;
+}
+.tab-pane.active .dept-list li:nth-child(4) {
+  animation-delay: 0.4s;
+}
+
+.tab-pane.active .section-h2,
+.tab-pane.active p,
+.tab-pane.active .btn {
+  animation: deptItemSlideIn 0.5s ease forwards;
 }
 
 .dept-list li:hover {
@@ -793,6 +929,13 @@ body {
   color: #1976d2;
   font-size: 11px;
   flex-shrink: 0;
+}
+
+@keyframes deptItemSlideIn {
+  to {
+    opacity: 1;
+    transform: translate(0);
+  }
 }
 
 /* =============================================
@@ -1048,7 +1191,19 @@ body {
    ============================================= */
 
 .doctors-area {
-  background: #f7f9fc;
+  background: url("../images/Our Team bg.jpg") center/cover no-repeat;
+  position: relative;
+  z-index: 1;
+  background-attachment: fixed;
+}
+
+.doctors-area::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(247, 249, 252, 0.766);
+  z-index: -1;
+  pointer-events: none;
 }
 
 .doctor-card {
