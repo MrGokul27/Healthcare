@@ -6,8 +6,6 @@
 .contact-breadcrumb {
   position: relative;
   padding: 140px 0 80px;
-  background: url("https://images.unsplash.com/photo-1584036561566-baf8f5f1b144?w=1600&q=80")
-    center/cover no-repeat;
   text-align: center;
 }
 .contact-breadcrumb-overlay {
