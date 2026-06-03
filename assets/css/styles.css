@@ -1267,7 +1267,7 @@ body {
    ============================================= */
 
 .doctors-area {
-  background: url("../images/Our Team bg.jpg") center/cover no-repeat;
+  background: url("../images/Our Team bg.webp") center/cover no-repeat;
   position: relative;
   z-index: 1;
   background-attachment: fixed;

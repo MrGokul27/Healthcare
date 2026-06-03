@@ -6,8 +6,6 @@
 .blog-breadcrumb {
   position: relative;
   padding: 140px 0 80px;
-  background: url("/assets/images/banner-images/blog-banner-image.webp")
-    center/cover no-repeat;
   text-align: center;
 }
 
