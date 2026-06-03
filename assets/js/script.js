@@ -84,18 +84,6 @@ Promise.all([
   // Lock body scroll when mobile menu is open
   const navbarCollapse = document.querySelector(".navbar-collapse");
   if (navbarCollapse) {
-    // Add close button for mobile view
-    const closeBtn = document.createElement("button");
-    closeBtn.className = "btn-close btn-close-white mobile-nav-close d-lg-none";
-    closeBtn.setAttribute("type", "button");
-    closeBtn.setAttribute("aria-label", "Close");
-    navbarCollapse.prepend(closeBtn);
-
-    closeBtn.addEventListener("click", () => {
-      const bsCollapse = bootstrap.Collapse.getOrCreateInstance(navbarCollapse);
-      bsCollapse.hide();
-    });
-
     navbarCollapse.addEventListener("show.bs.collapse", () => {
       document.body.style.overflow = "hidden";
     });
