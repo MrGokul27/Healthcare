@@ -1899,7 +1899,7 @@ body {
     align-items: flex-start;
   }
   .hero-content {
-    padding: 0;
+    padding: 50px 0;
   }
   .hero-content h1 {
     font-size: 26px;

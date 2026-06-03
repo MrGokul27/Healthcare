@@ -282,3 +282,31 @@ function logout() {
   sessionStorage.removeItem("user");
   window.location.href = "login.html";
 }
+
+// Intercept # / empty links AND buttons marked data-nav="404"
+function handle404Links() {
+  document.addEventListener("click", function (e) {
+    // <a> with # or no href
+    const link = e.target.closest("a");
+    if (link) {
+      const href = link.getAttribute("href");
+      if (!href || href === "#" || href === "javascript:void(0)") {
+        e.preventDefault();
+        window.location.href = "404.html";
+        return;
+      }
+    }
+    // <button data-nav="404">
+    const btn = e.target.closest('button[data-nav="404"]');
+    if (btn) {
+      e.preventDefault();
+      window.location.href = "404.html";
+    }
+  });
+}
+
+if (document.readyState === "loading") {
+  document.addEventListener("DOMContentLoaded", handle404Links);
+} else {
+  handle404Links();
+}
