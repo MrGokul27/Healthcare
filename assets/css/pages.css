@@ -989,6 +989,316 @@
   padding: 0 4px;
 }
 
+.um-table-wrap {
+  overflow-x: auto;
+  display: block;
+}
+
+.um-cards {
+  display: none;
+  padding: 16px;
+  gap: 16px;
+}
+
+.um-card {
+  background: #fff;
+  border-radius: 14px;
+  border: 1px solid #e0eaf5;
+  padding: 16px;
+  box-shadow: 0 2px 8px rgba(25, 118, 210, 0.05);
+}
+
+.um-card-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 14px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid #f0f4f8;
+}
+
+.um-card-body {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-bottom: 14px;
+}
+
+.um-info-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+}
+
+.um-label {
+  font-size: 12px;
+  font-weight: 600;
+  color: #888;
+}
+
+.um-value {
+  font-size: 12px;
+  color: #0d1b2a;
+  font-weight: 500;
+  text-align: right;
+  word-break: break-word;
+}
+
+.um-card-footer {
+  display: flex;
+  gap: 8px;
+  justify-content: flex-end;
+  padding-top: 12px;
+  border-top: 1px solid #f0f4f8;
+}
+
+/* ── Patients Table Mobile ───────────────────── */
+.pt-table-wrap {
+  overflow-x: auto;
+  display: block;
+}
+
+.pt-cards {
+  display: none;
+  padding: 16px;
+  gap: 16px;
+}
+
+.pt-card {
+  background: #fff;
+  border-radius: 14px;
+  border: 1px solid #e0eaf5;
+  padding: 16px;
+  box-shadow: 0 2px 8px rgba(25, 118, 210, 0.05);
+}
+
+.pt-card-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 14px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid #f0f4f8;
+}
+
+.pt-card-body {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-bottom: 14px;
+}
+
+.pt-info-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+}
+
+.pt-label {
+  font-size: 12px;
+  font-weight: 600;
+  color: #888;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.pt-label i {
+  font-size: 11px;
+  color: #1976d2;
+}
+
+.pt-value {
+  font-size: 12px;
+  color: #0d1b2a;
+  font-weight: 500;
+  text-align: right;
+}
+
+.pt-card-footer {
+  display: flex;
+  gap: 8px;
+  justify-content: flex-end;
+  padding-top: 12px;
+  border-top: 1px solid #f0f4f8;
+}
+
+/* ── Vitals History Mobile ───────────────────── */
+.vitals-table-wrap {
+  overflow-x: auto;
+  display: block;
+}
+
+.vitals-history-cards {
+  display: none;
+  padding: 16px;
+  gap: 16px;
+  flex-direction: column;
+}
+
+.vh-card {
+  background: #fff;
+  border-radius: 14px;
+  border: 1px solid #e0eaf5;
+  padding: 16px;
+  box-shadow: 0 2px 8px rgba(25, 118, 210, 0.05);
+}
+
+.vh-date {
+  font-size: 13px;
+  font-weight: 700;
+  color: #1976d2;
+  margin-bottom: 12px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid #f0f4f8;
+}
+
+.vh-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12px;
+}
+
+.vh-item {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.vh-label {
+  font-size: 11px;
+  font-weight: 600;
+  color: #888;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.vh-val {
+  font-size: 13px;
+  font-weight: 700;
+  color: #0d1b2a;
+}
+
+/* ── Reports Mobile ─────────────────────────── */
+.rp-table-wrap {
+  overflow-x: auto;
+  display: block;
+}
+
+.report-name {
+  font-size: 13px;
+  font-weight: 600;
+  color: #0d1b2a;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.type-chip {
+  display: inline-block;
+  font-size: 11px;
+  font-weight: 700;
+  padding: 3px 10px;
+  border-radius: 20px;
+  white-space: nowrap;
+}
+
+.type-chip.lab {
+  background: #e3f2fd;
+  color: #1976d2;
+}
+.type-chip.clinical {
+  background: #e8f5e9;
+  color: #2e7d32;
+}
+.type-chip.billing {
+  background: #fff3e0;
+  color: #e65100;
+}
+.type-chip.summary {
+  background: #ede7f6;
+  color: #6a1b9a;
+}
+
+.rp-cards {
+  display: none;
+  padding: 16px;
+  gap: 16px;
+  flex-direction: column;
+}
+
+.rp-card {
+  background: #fff;
+  border-radius: 14px;
+  border: 1px solid #e0eaf5;
+  padding: 16px;
+  box-shadow: 0 2px 8px rgba(25, 118, 210, 0.05);
+}
+
+.rp-card-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 14px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid #f0f4f8;
+}
+
+.rp-card-body {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-bottom: 14px;
+}
+
+.rp-info-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+}
+
+.rp-label {
+  font-size: 12px;
+  font-weight: 600;
+  color: #888;
+}
+
+.rp-value {
+  font-size: 12px;
+  color: #0d1b2a;
+  font-weight: 500;
+}
+
+.rp-card-footer {
+  display: flex;
+  gap: 8px;
+  justify-content: flex-end;
+  padding-top: 12px;
+  border-top: 1px solid #f0f4f8;
+}
+
+@media (max-width: 768px) {
+  .um-table-wrap,
+  .pt-table-wrap,
+  .vitals-table-wrap,
+  .rp-table-wrap {
+    display: none;
+  }
+  .um-cards,
+  .pt-cards,
+  .vitals-history-cards,
+  .rp-cards {
+    display: flex;
+    flex-direction: column;
+  }
+}
+
 .user-role-badge {
   display: inline-flex;
   align-items: center;
@@ -1013,6 +1323,34 @@
   color: #e65100;
 }
 .user-role-badge.admin {
+  background: #fce4ec;
+  color: #c62828;
+}
+
+.role-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 11px;
+  font-weight: 700;
+  padding: 3px 10px;
+  border-radius: 20px;
+  text-transform: capitalize;
+}
+
+.role-chip.patient {
+  background: #e3f2fd;
+  color: #1976d2;
+}
+.role-chip.doctor {
+  background: #e8f5e9;
+  color: #2e7d32;
+}
+.role-chip.staff {
+  background: #fff3e0;
+  color: #e65100;
+}
+.role-chip.admin {
   background: #fce4ec;
   color: #c62828;
 }

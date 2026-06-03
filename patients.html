@@ -116,7 +116,8 @@
               </select>
             </div>
           </div>
-          <div style="overflow-x: auto">
+          <!-- Desktop Table -->
+          <div class="pt-table-wrap">
             <table class="data-table" id="patientTable">
               <thead>
                 <tr>
@@ -131,7 +132,7 @@
                 </tr>
               </thead>
               <tbody id="patientBody">
-                <tr>
+                <tr data-dept="Cardiology">
                   <td>
                     <div class="patient-cell">
                       <div class="pt-avatar">RK</div>
@@ -155,7 +156,7 @@
                     </button>
                   </td>
                 </tr>
-                <tr>
+                <tr data-dept="General Medicine">
                   <td>
                     <div class="patient-cell">
                       <div class="pt-avatar">LD</div>
@@ -179,7 +180,7 @@
                     </button>
                   </td>
                 </tr>
-                <tr>
+                <tr data-dept="Cardiology">
                   <td>
                     <div class="patient-cell">
                       <div class="pt-avatar">MD</div>
@@ -203,7 +204,7 @@
                     </button>
                   </td>
                 </tr>
-                <tr>
+                <tr data-dept="Dermatology">
                   <td>
                     <div class="patient-cell">
                       <div class="pt-avatar">SR</div>
@@ -229,7 +230,7 @@
                     </button>
                   </td>
                 </tr>
-                <tr>
+                <tr data-dept="Orthopedics">
                   <td>
                     <div class="patient-cell">
                       <div class="pt-avatar">AJ</div>
@@ -253,7 +254,7 @@
                     </button>
                   </td>
                 </tr>
-                <tr>
+                <tr data-dept="Neurology">
                   <td>
                     <div class="patient-cell">
                       <div class="pt-avatar">PM</div>
@@ -277,7 +278,7 @@
                     </button>
                   </td>
                 </tr>
-                <tr>
+                <tr data-dept="General Medicine">
                   <td>
                     <div class="patient-cell">
                       <div class="pt-avatar">VK</div>
@@ -301,7 +302,7 @@
                     </button>
                   </td>
                 </tr>
-                <tr>
+                <tr data-dept="Cardiology">
                   <td>
                     <div class="patient-cell">
                       <div class="pt-avatar">NR</div>
@@ -330,6 +331,8 @@
               </tbody>
             </table>
           </div>
+          <!-- Mobile Cards -->
+          <div class="pt-cards" id="ptCards"></div>
         </div>
       </main>
     </div>
@@ -352,7 +355,160 @@
             ? ""
             : "none";
         });
+        document.querySelectorAll(".pt-card").forEach((c) => {
+          c.style.display = c.textContent
+            .toLowerCase()
+            .includes(val.toLowerCase())
+            ? ""
+            : "none";
+        });
       }
+
+      function filterByDept(dept) {
+        document.querySelectorAll("#patientBody tr").forEach((r) => {
+          r.style.display = !dept || r.dataset.dept === dept ? "" : "none";
+        });
+        document.querySelectorAll(".pt-card").forEach((c) => {
+          c.style.display = !dept || c.dataset.dept === dept ? "" : "none";
+        });
+      }
+
+      // Populate mobile cards
+      const patients = [
+        {
+          id: "PT-001",
+          avatar: "RK",
+          name: "Ravi Kumar",
+          email: "ravi.kumar@email.com",
+          age: "45, Male",
+          dept: "Cardiology",
+          doctor: "Dr. Priya Sharma",
+          visit: "28 Jan 2025",
+          status: "active",
+        },
+        {
+          id: "PT-002",
+          avatar: "LD",
+          name: "Lakshmi Devi",
+          email: "lakshmi.devi@email.com",
+          age: "32, Female",
+          dept: "General Medicine",
+          doctor: "Dr. Ananya Iyer",
+          visit: "27 Jan 2025",
+          status: "active",
+        },
+        {
+          id: "PT-003",
+          avatar: "MD",
+          name: "Mohan Das",
+          email: "mohan.das@email.com",
+          age: "58, Male",
+          dept: "Cardiology",
+          doctor: "Dr. Priya Sharma",
+          visit: "26 Jan 2025",
+          status: "waiting",
+        },
+        {
+          id: "PT-004",
+          avatar: "SR",
+          name: "Sunita Rao",
+          email: "sunita.rao@email.com",
+          age: "29, Female",
+          dept: "Dermatology",
+          doctor: "Dr. Meena Pillai",
+          visit: "25 Jan 2025",
+          status: "discharged",
+        },
+        {
+          id: "PT-005",
+          avatar: "AJ",
+          name: "Arun Joshi",
+          email: "arun.joshi@email.com",
+          age: "40, Male",
+          dept: "Orthopedics",
+          doctor: "Dr. Suresh Nair",
+          visit: "24 Jan 2025",
+          status: "active",
+        },
+        {
+          id: "PT-006",
+          avatar: "PM",
+          name: "Preethi Menon",
+          email: "preethi.menon@email.com",
+          age: "36, Female",
+          dept: "Neurology",
+          doctor: "Dr. Raj Mehta",
+          visit: "23 Jan 2025",
+          status: "waiting",
+        },
+        {
+          id: "PT-007",
+          avatar: "VK",
+          name: "Vijay Kumar",
+          email: "vijay.kumar@email.com",
+          age: "52, Male",
+          dept: "General Medicine",
+          doctor: "Dr. Ananya Iyer",
+          visit: "22 Jan 2025",
+          status: "active",
+        },
+        {
+          id: "PT-008",
+          avatar: "NR",
+          name: "Nirmala Reddy",
+          email: "nirmala.reddy@email.com",
+          age: "48, Female",
+          dept: "Cardiology",
+          doctor: "Dr. Priya Sharma",
+          visit: "21 Jan 2025",
+          status: "discharged",
+        },
+      ];
+
+      document.getElementById("ptCards").innerHTML = patients
+        .map(
+          (p) => `
+        <div class="pt-card" data-dept="${p.dept}">
+          <div class="pt-card-header">
+            <div class="patient-cell">
+              <div class="pt-avatar">${p.avatar}</div>
+              <div>
+                <div class="pt-name">${p.name}</div>
+                <div class="pt-id-sub">${p.email}</div>
+              </div>
+            </div>
+            <span class="pt-id">${p.id}</span>
+          </div>
+          <div class="pt-card-body">
+            <div class="pt-info-row">
+              <span class="pt-label"><i class="fas fa-user"></i> Age/Gender:</span>
+              <span class="pt-value">${p.age}</span>
+            </div>
+            <div class="pt-info-row">
+              <span class="pt-label"><i class="fas fa-hospital"></i> Department:</span>
+              <span class="pt-value">${p.dept}</span>
+            </div>
+            <div class="pt-info-row">
+              <span class="pt-label"><i class="fas fa-user-doctor"></i> Doctor:</span>
+              <span class="pt-value">${p.doctor}</span>
+            </div>
+            <div class="pt-info-row">
+              <span class="pt-label"><i class="fas fa-calendar"></i> Last Visit:</span>
+              <span class="pt-value">${p.visit}</span>
+            </div>
+            <div class="pt-info-row">
+              <span class="pt-label"><i class="fas fa-circle-info"></i> Status:</span>
+              <span class="status-chip ${p.status}">${p.status === "active" ? "Active" : p.status === "waiting" ? "Waiting" : "Discharged"}</span>
+            </div>
+          </div>
+          <div class="pt-card-footer">
+            <button class="icon-btn" title="View"><i class="fas fa-eye"></i></button>
+            <button class="icon-btn" title="Edit"><i class="fas fa-pen"></i></button>
+          </div>
+        </div>
+      `,
+        )
+        .join("");
     </script>
   </body>
 </html>

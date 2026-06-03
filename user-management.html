@@ -123,7 +123,8 @@
               oninput="searchUsers(this.value)"
             />
           </div>
-          <div style="overflow-x: auto">
+          <!-- Desktop Table -->
+          <div class="um-table-wrap">
             <table class="data-table" id="usersTable">
               <thead>
                 <tr>
@@ -338,6 +339,8 @@
               </tbody>
             </table>
           </div>
+          <!-- Mobile Cards -->
+          <div class="um-cards" id="umCards"></div>
         </div>
       </main>
     </div>
@@ -360,6 +363,10 @@
           r.style.display =
             role === "all" || r.dataset.role === role ? "" : "none";
         });
+        document.querySelectorAll(".um-card").forEach((c) => {
+          c.style.display =
+            role === "all" || c.dataset.role === role ? "" : "none";
+        });
       }
       function searchUsers(val) {
         document.querySelectorAll("#usersBody tr").forEach((r) => {
@@ -369,7 +376,149 @@
             ? ""
             : "none";
         });
+        document.querySelectorAll(".um-card").forEach((c) => {
+          c.style.display = c.textContent
+            .toLowerCase()
+            .includes(val.toLowerCase())
+            ? ""
+            : "none";
+        });
       }
+
+      // Populate mobile cards
+      const users = [
+        {
+          role: "doctor",
+          avatar: "PS",
+          name: "Dr. Priya Sharma",
+          sub: "Cardiology Specialist",
+          email: "priya.sharma@stackly.health",
+          joined: "Jan 2024",
+          login: "28 Jan 2025",
+          status: "active",
+        },
+        {
+          role: "doctor",
+          avatar: "RM",
+          name: "Dr. Raj Mehta",
+          sub: "Neurology Specialist",
+          email: "raj.mehta@stackly.health",
+          joined: "Mar 2024",
+          login: "27 Jan 2025",
+          status: "active",
+        },
+        {
+          role: "doctor",
+          avatar: "AI",
+          name: "Dr. Ananya Iyer",
+          sub: "General Medicine",
+          email: "ananya.iyer@stackly.health",
+          joined: "Feb 2024",
+          login: "26 Jan 2025",
+          status: "active",
+        },
+        {
+          role: "staff",
+          avatar: "KR",
+          name: "Kavitha Rajan",
+          sub: "Head Nurse, Ward A",
+          email: "kavitha.rajan@stackly.health",
+          joined: "Apr 2024",
+          login: "28 Jan 2025",
+          status: "active",
+        },
+        {
+          role: "staff",
+          avatar: "VP",
+          name: "Vinod Pillai",
+          sub: "Front Desk",
+          email: "vinod.pillai@stackly.health",
+          joined: "Jun 2024",
+          login: "27 Jan 2025",
+          status: "active",
+        },
+        {
+          role: "patient",
+          avatar: "RK",
+          name: "Ravi Kumar",
+          sub: "Patient ID: PT-001",
+          email: "ravi.kumar@gmail.com",
+          joined: "Jul 2024",
+          login: "25 Jan 2025",
+          status: "active",
+        },
+        {
+          role: "patient",
+          avatar: "LD",
+          name: "Lakshmi Devi",
+          sub: "Patient ID: PT-002",
+          email: "lakshmi.devi@gmail.com",
+          joined: "Aug 2024",
+          login: "24 Jan 2025",
+          status: "active",
+        },
+        {
+          role: "admin",
+          avatar: "AM",
+          name: "Dr. Ananya Menon",
+          sub: "Hospital Administrator",
+          email: "admin@stackly.health",
+          joined: "Jan 2024",
+          login: "28 Jan 2025",
+          status: "active",
+        },
+        {
+          role: "patient",
+          avatar: "SR",
+          name: "Sunita Rao",
+          sub: "Patient ID: PT-004",
+          email: "sunita.rao@gmail.com",
+          joined: "Sep 2024",
+          login: "20 Jan 2025",
+          status: "discharged",
+        },
+      ];
+
+      document.getElementById("umCards").innerHTML = users
+        .map(
+          (u) => `
+        <div class="um-card" data-role="${u.role}">
+          <div class="um-card-header">
+            <div class="patient-cell">
+              <div class="pt-avatar">${u.avatar}</div>
+              <div>
+                <div class="pt-name">${u.name}</div>
+                <div class="pt-id-sub">${u.sub}</div>
+              </div>
+            </div>
+            <span class="role-chip ${u.role}">${u.role}</span>
+          </div>
+          <div class="um-card-body">
+            <div class="um-info-row">
+              <span class="um-label">Email:</span>
+              <span class="um-value">${u.email}</span>
+            </div>
+            <div class="um-info-row">
+              <span class="um-label">Joined:</span>
+              <span class="um-value">${u.joined}</span>
+            </div>
+            <div class="um-info-row">
+              <span class="um-label">Last Login:</span>
+              <span class="um-value">${u.login}</span>
+            </div>
+            <div class="um-info-row">
+              <span class="um-label">Status:</span>
+              <span class="status-chip ${u.status}">${u.status === "active" ? "Active" : "Inactive"}</span>
+            </div>
+          </div>
+          <div class="um-card-footer">
+            <button class="icon-btn"><i class="fas fa-pen"></i></button>
+            <button class="icon-btn danger"><i class="fas fa-ban"></i></button>
+          </div>
+        </div>
+      `,
+        )
+        .join("");
     </script>
   </body>
 </html>
