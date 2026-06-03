@@ -55,6 +55,14 @@ body {
   border: 1px solid rgba(255, 255, 255, 0.25);
 }
 
+.db-sidebar-logo a {
+  color: #fff;
+}
+
+.db-sidebar-logo a:hover {
+  opacity: 0.85;
+}
+
 .db-sidebar-logo span {
   font-size: 20px;
   font-weight: 800;

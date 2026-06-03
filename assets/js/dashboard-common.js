@@ -233,8 +233,10 @@ function initSidebar(user, activeLabel) {
   const aside = document.getElementById("sidebar");
   aside.innerHTML = `
     <div class="db-sidebar-logo">
-      <div class="logo-icon"><i class="fas fa-plus-circle"></i></div>
-      <span>Stack<em>ly</em></span>
+      <a href="index.html" style="display:flex;align-items:center;gap:12px;text-decoration:none;">
+        <div class="logo-icon"><i class="fas fa-plus-circle"></i></div>
+        <span>Stack<em>ly</em></span>
+      </a>
     </div>
     <nav class="db-nav" id="sidebarNav"></nav>
     <div class="db-sidebar-user">
