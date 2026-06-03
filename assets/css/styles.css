@@ -939,6 +939,10 @@ body {
 .tab-content .tab-pane img {
   border-radius: 16px !important;
   box-shadow: 0 12px 40px rgba(0, 0, 0, 0.12) !important;
+  width: 100% !important;
+  height: 360px !important;
+  object-fit: cover !important;
+  object-position: center !important;
 }
 
 .dept-list {
