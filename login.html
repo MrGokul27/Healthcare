@@ -161,11 +161,32 @@
             </div>
 
             <!-- Remember -->
-            <div class="mb-3 form-check mt-2">
-              <input type="checkbox" class="form-check-input" id="rememberMe" />
-              <label class="form-check-label small text-muted" for="rememberMe"
-                >Remember me on this device</label
+            <div class="mb-3 mt-2">
+              <div class="form-check">
+                <input
+                  type="checkbox"
+                  class="form-check-input"
+                  id="rememberMe"
+                />
+                <label
+                  class="form-check-label small text-muted"
+                  for="rememberMe"
+                  >Remember me on this device</label
+                >
+              </div>
+              <div
+                class="invalid-feedback d-none"
+                id="rememberError"
+                style="
+                  display: block;
+                  font-size: 12px;
+                  color: #dc3545;
+                  margin-top: 4px;
+                "
               >
+                <i class="fas fa-exclamation-circle me-1"></i>Please accept the
+                Remember Me checkbox.
+              </div>
             </div>
 
             <button type="submit" class="btn auth-btn">
@@ -213,10 +234,24 @@
         .querySelector(".auth-form")
         .addEventListener("submit", function (e) {
           e.preventDefault();
+          const rememberMe = document.getElementById("rememberMe");
+          const rememberError = document.getElementById("rememberError");
+          if (!rememberMe.checked) {
+            rememberError.classList.remove("d-none");
+            rememberMe.focus();
+            return;
+          }
+          rememberError.classList.add("d-none");
           const role = document.querySelector(".role-pill.active").dataset.role;
           const email = document.querySelector('input[type="email"]').value;
           sessionStorage.setItem("user", JSON.stringify({ email, role }));
           window.location.href = "dashboard.html";
+        });
+
+      document
+        .getElementById("rememberMe")
+        .addEventListener("change", function () {
+          document.getElementById("rememberError").classList.add("d-none");
         });
     </script>
   </body>

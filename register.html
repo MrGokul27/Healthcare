@@ -116,12 +116,17 @@
                 <input
                   type="text"
                   class="form-control"
+                  id="fullName"
                   placeholder="Enter your full name"
+                  maxlength="16"
                   required
                   oninvalid="
                     this.setCustomValidity('Please fill in your Full Name')
                   "
-                  oninput="this.setCustomValidity('')"
+                  oninput="
+                    this.setCustomValidity('');
+                    this.value = this.value.replace(/[0-9]/g, '');
+                  "
                 />
               </div>
             </div>
