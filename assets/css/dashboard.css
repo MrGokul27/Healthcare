@@ -655,21 +655,58 @@ body {
   }
   .db-topbar {
     padding: 0 16px;
+    height: 60px;
+  }
+  .db-topbar-left h5 {
+    font-size: 15px;
+  }
+  .db-topbar-left p {
+    font-size: 11px;
   }
   .db-content {
     padding: 16px;
   }
+  .welcome-banner {
+    padding: 20px;
+  }
+  .welcome-text h2 {
+    font-size: 18px;
+  }
+  .stats-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
 }
 
 @media (max-width: 576px) {
+  .db-topbar {
+    height: 56px;
+  }
+  .db-content {
+    padding: 12px;
+  }
   .welcome-banner {
     flex-direction: column;
     gap: 12px;
+    text-align: center;
   }
   .welcome-banner-icon {
     font-size: 50px;
   }
   .stats-grid {
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: 1fr;
+  }
+  .stat-card {
+    padding: 16px;
+  }
+  .topbar-user .uname {
+    display: none;
+  }
+  .db-topbar-right {
+    gap: 8px;
+  }
+  .topbar-icon-btn {
+    width: 34px;
+    height: 34px;
+    font-size: 14px;
   }
 }
